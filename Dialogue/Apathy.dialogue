@@ -1,0 +1,42 @@
+~ start
+Apathy: Most stop caring long before this.
+=> END
+
+~ mid_fight_1st
+% Apathy: You keep dodging.
+% Apathy: Why bother.
+
+~ mid_fight_2nd
+% Apathy: Tired yet?.
+% Apathy: That feelong you're pushing through...
+	That's what breaks people.
+=> END
+
+~ mid_fight_final
+% Apathy: You're still here?.
+% Apathy: Strange.
+=> END
+
+~ player_dies
+% Apathy: See.
+% Apathy: Stopping would've been easier.
+=> END
+
+~ vulnerable
+% Apathy: I don't understand you.
+% Apathy: You didn't win.
+	You just... Refused to leave.
+
+=> END
+~ spared
+% Apathy: Mercy?.
+% Apathy: I don't feel it.
+% Apathy: ...But I remember what it was.
+% Apathy: Go.
+=> END
+
+~ killed
+% Apathy: So you choice force.
+% Apathy: Figures.
+% Apathy: ...Don't pretend it meant something.
+=> END

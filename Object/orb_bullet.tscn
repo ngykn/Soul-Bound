@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://qjf677b8isx4"]
+
+[ext_resource type="Script" path="res://Script/Object/orb_bullet.gd" id="1_tcevs"]
+[ext_resource type="Texture2D" uid="uid://duv2m52a2qbwa" path="res://Place Holder Art/Object/Bullet2.png" id="1_w15sk"]
+[ext_resource type="PackedScene" uid="uid://2ypuew1kwj08" path="res://Overlap/hitbox.tscn" id="2_dpeg8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpu5s"]
+radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohhky"]
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_tcevs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qpu5s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.709804, 0, 0, 1)
+texture = ExtResource("1_w15sk")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_dpeg8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ohhky")

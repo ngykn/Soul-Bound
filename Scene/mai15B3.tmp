@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3cd681wj8kn1"]
+
+[ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="1_tbj13"]
+[ext_resource type="Script" path="res://Script/Sceme/scene.gd" id="1_ypa2i"]
+[ext_resource type="PackedScene" uid="uid://c11errhlttwlj" path="res://Entity/Enemy/Basic Enemy/apathy.tscn" id="2_f5noa"]
+[ext_resource type="Script" path="res://Script/Object/Camera.gd" id="3_1b5gm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ypa2i")
+
+[node name="Player" parent="." instance=ExtResource("1_tbj13")]
+position = Vector2(44, 274)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+script = ExtResource("3_1b5gm")
+
+[node name="Apathy" parent="." instance=ExtResource("2_f5noa")]
+position = Vector2(339, 79)
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

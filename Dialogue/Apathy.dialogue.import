@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://d5tm8yf3lf7a"
+path="res://.godot/imported/Apathy.dialogue-562ea5f724d382be77c17dca2f7b5af4.tres"
+
+[deps]
+
+source_file="res://Dialogue/Apathy.dialogue"
+dest_files=["res://.godot/imported/Apathy.dialogue-562ea5f724d382be77c17dca2f7b5af4.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6qaogatqrkqk"]
+
+[ext_resource type="Texture2D" uid="uid://btovmbrusik8t" path="res://icon.svg" id="1_3k0d6"]
+[ext_resource type="Script" path="res://Script/Object/apathy_orb.gd" id="1_qlcxo"]
+[ext_resource type="PackedScene" uid="uid://cmisl0n0u57mt" path="res://Overlap/hurtbox.tscn" id="2_6d5ee"]
+[ext_resource type="PackedScene" uid="uid://qjf677b8isx4" path="res://Object/orb_bullet.tscn" id="2_bcdfi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_haw7d"]
+radius = 18.0278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evujp"]
+radius = 30.0167
+
+[node name="Orb" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_qlcxo")
+bullet_scene = ExtResource("2_bcdfi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_3k0d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_haw7d")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_6d5ee")]
+modulate = Color(0.509804, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_evujp")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BurstTimer" type="Timer" parent="."]
+one_shot = true

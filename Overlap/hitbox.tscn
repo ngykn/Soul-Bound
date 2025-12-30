@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ypuew1kwj08"]
+
+[ext_resource type="Script" path="res://Script/Overlap/hitbox.gd" id="1_nukyr"]
+
+[node name="Hitbox" type="Area2D"]
+monitoring = false
+script = ExtResource("1_nukyr")

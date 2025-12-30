@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmisl0n0u57mt"]
+
+[ext_resource type="Script" path="res://Script/Overlap/hurtbox.gd" id="1_lqofg"]
+
+[node name="Hurtbox" type="Area2D"]
+monitorable = false
+script = ExtResource("1_lqofg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

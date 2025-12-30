@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c11errhlttwlj"]
+
+[ext_resource type="Texture2D" uid="uid://5kpvktd553uj" path="res://Place Holder Art/Enemy/Apathy.png" id="1_8th04"]
+[ext_resource type="Script" path="res://Script/Entity/Enemy/apathy.gd" id="1_h4p1o"]
+[ext_resource type="PackedScene" uid="uid://c6qaogatqrkqk" path="res://Object/apathy_orb.tscn" id="2_dy6sb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x84tb"]
+radius = 6.0
+
+[node name="Apathy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_h4p1o")
+orb_scene = ExtResource("2_dy6sb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("1_8th04")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_x84tb")
+
+[node name="AttackTimer" type="Timer" parent="."]
