@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2r1gemhapw8"]
+
+[ext_resource type="PackedScene" uid="uid://cxj6veq6r53bh" path="res://Environment/station_template.tscn" id="1_aa746"]
+[ext_resource type="Texture2D" uid="uid://cm7thlnmdw10h" path="res://Assets/Environment/Stations/Alchemy.png" id="2_v3xrc"]
+
+[node name="Station" instance=ExtResource("1_aa746")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_v3xrc")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-24, 8, 24, 8, 24, -8, -24, -8)

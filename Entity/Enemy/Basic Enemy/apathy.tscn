@@ -1,11 +1,140 @@
-[gd_scene load_steps=5 format=3 uid="uid://c11errhlttwlj"]
+[gd_scene load_steps=10 format=3 uid="uid://c11errhlttwlj"]
 
-[ext_resource type="Texture2D" uid="uid://5kpvktd553uj" path="res://Place Holder Art/Enemy/Apathy.png" id="1_8th04"]
 [ext_resource type="Script" path="res://Script/Entity/Enemy/apathy.gd" id="1_h4p1o"]
 [ext_resource type="PackedScene" uid="uid://c6qaogatqrkqk" path="res://Object/apathy_orb.tscn" id="2_dy6sb"]
+[ext_resource type="Texture2D" uid="uid://5ren8pwnuyv1" path="res://Assets/Entities/Enemy/Apathy/Apathy Idle.png" id="3_8ejqh"]
+[ext_resource type="Texture2D" uid="uid://c4u65gudmywve" path="res://Assets/Entities/Enemy/Apathy/Apathy DEath.png" id="4_b53iq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x84tb"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gfhb"]
 radius = 6.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_ljuo2"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_8ejqh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_g4teu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_8ejqh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t7qnb"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_b53iq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdfx2"]
+_data = {
+"Idle": SubResource("Animation_ljuo2"),
+"RESET": SubResource("Animation_g4teu"),
+"death": SubResource("Animation_t7qnb")
+}
 
 [node name="Apathy" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -16,14 +145,22 @@ orb_scene = ExtResource("2_dy6sb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 use_parent_material = true
-texture = ExtResource("1_8th04")
+texture = ExtResource("3_8ejqh")
+offset = Vector2(0, -16)
 flip_h = true
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_x84tb")
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_8gfhb")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gdfx2")
+}
+autoplay = "Idle"
+
+[node name="AtatckAnimation" type="AnimationPlayer" parent="."]

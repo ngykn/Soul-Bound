@@ -1,0 +1,117 @@
+~ normal_npc_pair1_v1
+if !_have_orb:
+	=> normal_npc_pair1_v2
+???? : …Sorry.
+???? : We don’t talk about those.
+=> END
+
+~ normal_npc_pair2_v1
+if !_have_orb:
+	=> normal_npc_pair2_v2
+???? : Best not to stand under them.[wait=1] They notice movement.
+=> END
+
+~ normal_npc1_v1
+if !_have_orb:
+	=> normal_npc1_v2
+???? : Don’t touch the red ones.
+???? : They’re not decorations.
+=> END
+
+~ normal_npc2_v1
+if !_have_orb:
+	=> normal_npc2_v2
+???? : Red means watch.[wait=1] That’s what they told us.
+=> END
+
+~ normal_npc_pair1_v2
+???? : …You’re not from here.
+=> END
+
+~ normal_npc_pair2_v2
+???? : Careful where you walk.
+???? : People notice now.
+=> END
+
+~ normal_npc1_v2
+???? : Town’s quieter lately.[wait=1] Quieter than it should be.
+=> END
+
+~ normal_npc2_v2
+???? : Feels like we’re waiting. [wait=1] Not sure for what.
+=> END
+
+~ butcher_1
+Butcher : Fresh. I think
+Butcher : Doesn’t matter. People still eat
+=> END
+
+~ butcher_2
+Butcher : Used to sell out by noon. [wait=1]
+Butcher : Not anymore.
+=> END
+
+~ Alchemy_1
+Vendor : Potions still work.
+Vendor: You still shine
+=> END
+
+~ Alchemy_2
+Vendor: Careful outside the town.
+Vendor: Cruelty prefers open roads.
+=> END
+
+~ guard
+% ???? : You don’t belong past here.
+% ???? : Cruelty doesn’t need walls. [wait=1] People stop themselves.
+%1 ???? : Paths are chosen for you.
+=> END!
+
+~ Clue_NPC
+{{GlobalManager.player_name}}: Why won’t they let me through?
+????: Because you haven’t been seen.
+{{GlobalManager.player_name}}: Seen by who?
+????: He doesn’t talk much.
+	But Cruelty listens to him.
+=> END
+
+~ Important_NPC
+if met_npcs.has("Aren"):
+	=> Aren_Closing_Line
+
+???? : …Door was open.
+{{GlobalManager.player_name}} : Someone told me to come here.
+???? : I know.
+???? : Aren.
+{{GlobalManager.player_name}} : …Devika.
+Aren : Right.
+{{GlobalManager.player_name}} : You were waiting?
+Aren : Yes.
+{{GlobalManager.player_name}} : Why?
+Aren : Because the guard reported you.
+{{GlobalManager.player_name}} : For What?
+Aren : Trying twice.
+{{GlobalManager.player_name}} : It wouldn’t let me through.
+Aren : it's not meant to.
+{{GlobalManager.player_name}} : Then why is it there?
+Aren : To see who turns back.
+#Aren Transition : Aren Goes to the crafting table he picks up something then gave it to the Player
+Aren : This helps with that.
+{{GlobalManager.player_name}} :  What is it
+Aren : A push.
+#System
+Ability Unlock : [speed=1]Dash acquired
+{{GlobalManager.player_name}} : Why give this to me?
+Aren : Because you’re still colored.
+{{GlobalManager.player_name}} : And the guard?
+Aren : They won’t be there.
+{{GlobalManager.player_name}} : How do you know?
+Aren : I made the path he’s standing on.
+do ui.inventory._update_inventory("Dash Ring")
+do met_npcs.append("Aren")
+=> Aren_Closing_Line
+
+~ Aren_Closing_Line
+Aren : Don’t hesitate.
+Aren : That’s how they keep you.
+=> END

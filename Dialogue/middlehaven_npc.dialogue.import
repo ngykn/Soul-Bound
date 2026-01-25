@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dn2ny1h6aiwwy"
+path="res://.godot/imported/middlehaven_npc.dialogue-5fb71d95cf943fbfce8f0d84900d776a.tres"
+
+[deps]
+
+source_file="res://Dialogue/middlehaven_npc.dialogue"
+dest_files=["res://.godot/imported/middlehaven_npc.dialogue-5fb71d95cf943fbfce8f0d84900d776a.tres"]
+
+[params]
+
+defaults=true

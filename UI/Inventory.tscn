@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvt86bcaibdma"]
+
+[ext_resource type="Texture2D" uid="uid://bggsurugk5ucl" path="res://Assets/UI/RectangleBox_96x96.png" id="1_apwjr"]
+[ext_resource type="Texture2D" uid="uid://r4bojj2ub1s4" path="res://Assets/UI/TopPatternPanel_01_33x15.png" id="2_imnv5"]
+[ext_resource type="Script" path="res://Script/UI/Inventory.gd" id="2_wy2ww"]
+[ext_resource type="PackedScene" uid="uid://bbpjj5rrih5c0" path="res://UI/inventoryslot.tscn" id="4_qrpdg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8uqub"]
+texture = ExtResource("1_apwjr")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlk8c"]
+atlas = ExtResource("2_imnv5")
+region = Rect2(0, 0, 33, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11hpo"]
+atlas = ExtResource("2_imnv5")
+region = Rect2(34, 0, 33, 15)
+
+[node name="Inventory" type="Panel"]
+custom_minimum_size = Vector2(160, 164)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -82.0
+offset_right = 80.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(80, 82)
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8uqub")
+script = ExtResource("2_wy2ww")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_qlk8c")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_11hpo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Slots" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer" groups=["ui"]]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="slot" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot2" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot3" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot4" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot5" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot6" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot7" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot8" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot9" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot10" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot11" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot12" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot13" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot14" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot15" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2
+
+[node name="slot16" parent="MarginContainer/MarginContainer/VBoxContainer/Slots" instance=ExtResource("4_qrpdg")]
+layout_mode = 2

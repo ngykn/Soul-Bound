@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://btv6p2uhff52q"]
+
+[ext_resource type="Texture2D" uid="uid://0o8f1fl3cqk6" path="res://Assets/Environment/Stations/Cooking Station/Butchery/Butchery_04.png" id="1_acjfe"]
+
+[node name="Station"]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("1_acjfe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-40, 40, -24, 40, -24, 16, 8, 16, 8, 40, 24, 40, 24, 0, -24, 0, -24, 8, -40, 8)

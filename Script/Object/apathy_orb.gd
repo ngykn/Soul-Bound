@@ -1,9 +1,9 @@
-class_name  Orb extends CharacterBody2D
+class_name Orb extends CharacterBody2D
 
 signal desolve
 
 const MOVE_SPEED := 120.0
-const MAX_MOVE_TIME := 3.0
+const MAX_MOVE_TIME := 2.5
 const AIM_OFFSET_DEG := 25.0
 const BURST_COUNT := 12
 const BULLET_SCENE := preload("res://Object/orb_bullet.tscn")
@@ -14,6 +14,7 @@ var stopped := false
 var was_hit := false
 var player: Node2D
 
+@onready var animation_player = $AnimationPlayer
 @onready var move_timer : Timer = $MoveTimer
 @onready var burst_timer: Timer = $BurstTimer
 
@@ -25,8 +26,7 @@ func _ready():
 	_set_aimed_direction()
 
 	velocity = direction * MOVE_SPEED
-
-	move_timer.wait_time = randf_range(1.2 ,MAX_MOVE_TIME)
+	move_timer.wait_time = ((global_position.distance_to(player.global_position) / 2) / MOVE_SPEED)
 	move_timer.timeout.connect(_stop_orb)
 	move_timer.start()
 
@@ -80,9 +80,11 @@ func _resolve():
 		queue_free()
 		return
 
+	await _desolve()
 	await _fire_burst()
 	emit_signal("desolve")
 	queue_free()
+
 
 func _fire_burst():
 	for i in BURST_COUNT:
@@ -94,3 +96,12 @@ func _fire_burst():
 		bullet.direction = Vector2(cos(angle), sin(angle))
 
 		get_parent().add_child(bullet)
+
+func _fade_out(duration: float = 0.5):
+	var tween := create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, duration)
+	await tween.finished
+
+func _desolve() -> void:
+	animation_player.play("explode")
+	await animation_player.animation_finished

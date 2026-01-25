@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3fo385sht315"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ba2fg"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(640, 360, 0)
@@ -11,9 +12,11 @@ scale_max = 0.8
 turbulence_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_fphmd"]
+resource_local_to_scene = true
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fh0el"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_fphmd")
 width = 20
 height = 20

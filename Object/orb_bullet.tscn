@@ -5,23 +5,27 @@
 [ext_resource type="PackedScene" uid="uid://2ypuew1kwj08" path="res://Overlap/hitbox.tscn" id="2_dpeg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qpu5s"]
-radius = 3.16228
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohhky"]
+radius = 6.0
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D" groups=["apathy_bullet", "bullet", "enemy_bullet"]]
 collision_layer = 8
-collision_mask = 3
 script = ExtResource("1_tcevs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qpu5s")
+debug_color = Color(0.94902, 0.223529, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.709804, 0, 0, 1)
+scale = Vector2(2, 2)
 texture = ExtResource("1_w15sk")
 
-[node name="Hitbox" parent="." instance=ExtResource("2_dpeg8")]
+[node name="Hitbox" parent="." groups=["apathy_bullet", "enemy_bullet"] instance=ExtResource("2_dpeg8")]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_ohhky")

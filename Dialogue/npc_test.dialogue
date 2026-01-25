@@ -1,0 +1,4 @@
+~ test_one
+NPC : Hi, Hello there my name is NPC, how bout you?
+{{GlobalManager.player_name}} : Hi, mine is {{GlobalManager.player_name}}
+Nathan: Choose a Response...

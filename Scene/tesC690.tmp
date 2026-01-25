@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://7hxqmsg2d3by"]
+
+[ext_resource type="Script" path="res://Script/Sceme/test_enemy_scene.gd" id="1_ok4ph"]
+[ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="2_f8wh8"]
+[ext_resource type="Script" path="res://Script/Object/Camera.gd" id="3_rn4aa"]
+[ext_resource type="PackedScene" uid="uid://c11errhlttwlj" path="res://Entity/Enemy/Basic Enemy/apathy.tscn" id="4_s0dar"]
+[ext_resource type="Resource" uid="uid://c8hyonepa2war" path="res://Dialogue/apathy.dialogue" id="5_c84fv"]
+
+[node name="TestEnemyScene" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ok4ph")
+
+[node name="Player" parent="." instance=ExtResource("2_f8wh8")]
+position = Vector2(0, 64)
+
+[node name="CameraController" type="Camera2D" parent="."]
+position = Vector2(0, 72)
+zoom = Vector2(2, 2)
+script = ExtResource("3_rn4aa")
+
+[node name="Apathy" parent="." instance=ExtResource("4_s0dar")]
+position = Vector2(144, 64)
+dialogue = ExtResource("5_c84fv")
+wave_dialogue = Array[String](["apathy_wave_1"])
+attack_loop_count = 1
+attack_cooldown = 1

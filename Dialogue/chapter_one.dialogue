@@ -43,7 +43,36 @@
 ???? : Watch.
 ???? : Move.
 ???? : Endure.
+=> END
 
 ~ apathy_intro
-???? : ...
+Apathy : …
+Apathy : You’re still walking.
+{{GlobalManager.player_name}} : What are you?
+Apathy : Does it matter?
+Apathy : You’ll stop eventually.
+
+~ apathy_question
+Apathy : Why are you here?
+{{GlobalManager.player_name}} : I don’t know.
+Apathy : …
+Apathy : Then why keep moving?
+
+~ apathy_doubt
+Apathy : Everyone who arrives says something like that.
+Apathy : Hope.
+Apathy : Purpose.
+Apathy : They sound heavy.
+
+~ apathy_test
+Apathy : You look tired already.
+Apathy : This world does that.
+Apathy : If you stop now…
+Apathy : It won’t hurt.
+
+~ apathy_pre_fight
+Apathy : …
+Apathy : I won’t chase you.
+Apathy : I won’t try to win.
+Apathy : Let’s see how long you last.
 => END

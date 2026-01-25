@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnmcdpw7vl82x"]
+
+[ext_resource type="Script" path="res://Script/Overlap/exit_point.gd" id="1_4cp7h"]
+
+[node name="ExitPoint" type="Area2D"]
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_4cp7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

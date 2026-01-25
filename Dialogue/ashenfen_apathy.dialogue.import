@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dt2rn4jo7p1hb"
+path="res://.godot/imported/ashenfen_apathy.dialogue-0a16512a6b9319364fa12d3cece03bc4.tres"
+
+[deps]
+
+source_file="res://Dialogue/ashenfen_apathy.dialogue"
+dest_files=["res://.godot/imported/ashenfen_apathy.dialogue-0a16512a6b9319364fa12d3cece03bc4.tres"]
+
+[params]
+
+defaults=true

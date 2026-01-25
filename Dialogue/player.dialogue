@@ -1,0 +1,5 @@
+~ Door_is_lock
+% {{GlobalManager.player_name}}: Locked. Someone doesn’t want this opened.
+% {{GlobalManager.player_name}}: It won’t budge. Not now.
+% {{GlobalManager.player_name}}: The handle turns… then stops.
+=> END!

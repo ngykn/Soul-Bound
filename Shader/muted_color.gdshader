@@ -1,11 +1,17 @@
 shader_type canvas_item;
 
+
+uniform bool enabled = true;
 // Uniform to control the level of desaturation (0.0 = original, 1.0 = grayscale)
 uniform float desaturation_amount : hint_range(0.0, 1.0) = 0.5;
 
 void fragment() {
-    // Get the original color of the pixel
-    vec4 color = texture(TEXTURE, UV);
+	 vec4 color = texture(TEXTURE, UV);
+	if (!enabled){
+		COLOR = color;
+	} else {
+	// Get the original color of the pixel
+   
     
     // Calculate the luminance (perceived brightness) of the color
     // This is a common way to get a grayscale value that accounts for human perception
@@ -19,3 +25,5 @@ void fragment() {
     COLOR.rgb = muted_color;
     COLOR.a = color.a;
 }
+
+	}

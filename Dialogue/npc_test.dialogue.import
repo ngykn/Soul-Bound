@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bh0afknfat7l"
+path="res://.godot/imported/npc_test.dialogue-6cd1e0fda5f45f56f18fce3dc1f7b4fe.tres"
+
+[deps]
+
+source_file="res://Dialogue/npc_test.dialogue"
+dest_files=["res://.godot/imported/npc_test.dialogue-6cd1e0fda5f45f56f18fce3dc1f7b4fe.tres"]
+
+[params]
+
+defaults=true

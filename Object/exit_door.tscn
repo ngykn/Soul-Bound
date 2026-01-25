@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bawmj1kqwn828"]
+
+[ext_resource type="Script" path="res://Script/Object/exit_door.gd" id="1_i5820"]
+[ext_resource type="PackedScene" uid="uid://ciynull83kyl7" path="res://Object/door.tscn" id="2_2ulsu"]
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_i5820")
+
+[node name="Door" parent="." instance=ExtResource("2_2ulsu")]

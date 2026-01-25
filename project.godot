@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Soul Bound"
-run/main_scene="res://Scene/main.tscn"
+run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,10 +21,27 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalManager="*res://Script/Globals/GlobalManager.gd"
 GameState="*res://Script/Globals/GameState.gd"
 GlobalFunction="*res://Script/Globals/GlobalFunction.gd"
+TransitionManager="*res://Screen Overlay Effects/transition.tscn"
+NpcManager="*res://Script/Globals/npc_manager.gd"
+SaveLoadSystem="*res://Script/Globals/SaveLoadSystem.gd"
+GlobalReferences="*res://Script/Globals/GlobalReferences.gd"
+
+[dialogue_manager]
+
+general/states=["NpcManager"]
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "green",
+"res://Place Holder Art/": "teal",
+"res://Script/": "gray",
+"res://Shader/": "green"
+}
 
 [input]
 
@@ -67,8 +84,7 @@ dash={
 }
 attack={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"echo":false,"script":null)
 ]
 }
 slow_movement={
@@ -81,10 +97,15 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
 ]
 }
+inventory={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/dialogue.dialogue", "res://Dialogue/chapter_one.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/chapter_one.dialogue", "res://Dialogue/apathy.dialogue", "res://Dialogue/npc_test.dialogue", "res://Dialogue/middlehaven_npc.dialogue", "res://Dialogue/player.dialogue", "res://ashfen.dialogue", "res://Dialogue/ashenfen_apathy.dialogue")
 
 [layer_names]
 

@@ -27,9 +27,10 @@ var nickname = [
 func _on_save_pressed():
 	if line_edit.text == "":
 		line_edit.placeholder_text = "Invalid Name"
-	else: 
+	else:
 		GlobalManager.player_name = line_edit.text
-
+		
+		TransitionManager.change_scene(self, "res://Scene/barrenland.tscn")
 func _on_randomize_pressed():
 	var full_name = ("%s_%s") % [nickname.pick_random(), randi_range(0,100)]
 	line_edit.text = full_name

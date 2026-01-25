@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq4rj55kv0g50"]
+
+[ext_resource type="Script" path="res://Script/Placeholder/test_boss.gd" id="1_oqqxk"]
+[ext_resource type="Script" path="res://Script/Object/Camera.gd" id="3_2edi2"]
+[ext_resource type="PackedScene" uid="uid://c5dps8akg11dd" path="res://Entity/Enemy/Boss/despair.tscn" id="4_5vc8n"]
+[ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="4_fhatj"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_oqqxk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(288, 160)
+
+[node name="CameraController" type="Camera2D" parent="."]
+position = Vector2(288, 160)
+zoom = Vector2(2, 2)
+script = ExtResource("3_2edi2")
+
+[node name="Player" parent="." instance=ExtResource("4_fhatj")]
+position = Vector2(113, -1)
+
+[node name="Despair" parent="." instance=ExtResource("4_5vc8n")]
+position = Vector2(440, 192)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(576, 320)

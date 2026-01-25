@@ -1,0 +1,18 @@
+~ start
+Apathy : ....
+=> END
+
+~ apathy_wave_1
+Apathy : …
+Apathy : You’re dodging.
+Apathy : Why bother?
+=> END
+
+~ apathy_wave_2
+Apathy : You know this won’t change anything.
+=> END
+
+~ apathy_wave_3
+Apathy : …
+Apathy : You’re stubborn.
+=> END

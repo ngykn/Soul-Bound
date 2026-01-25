@@ -6,20 +6,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1jl4b"]
 radius = 5.0
 
-[node name="NPC" type="CharacterBody2D" groups=["npc"]]
+[node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("sprite_node") groups=["npc"]]
 y_sort_enabled = true
+use_parent_material = true
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_ckh58")
+sprite_node = NodePath("Cosmetics")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_1jl4b")
+
+[node name="Cosmetics" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Cosmetics"]
 y_sort_enabled = true
 use_parent_material = true
 texture = ExtResource("2_cboht")
 hframes = 2
 vframes = 2
 frame = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
-shape = SubResource("CircleShape2D_1jl4b")

@@ -40,6 +40,16 @@ func _process(delta):
 # PUBLIC API
 # ========================
 
+func set_bounds(bounds : Array):
+	if bounds.size() != 4:
+		printerr("Set bounds not equal to 4")
+		return
+
+	limit_left = bounds[0]
+	limit_top = bounds[1]
+	limit_right = bounds[2]
+	limit_bottom = bounds[3]
+
 func pan_to(pos: Vector2, time := 1.0):
 	_kill_tween()
 	mode = Mode.PAN
@@ -139,3 +149,16 @@ func _kill_tween():
 	if tween and tween.is_running():
 		tween.kill()
 	tween = null
+
+
+func _get_limit() -> Array:
+	return[
+			limit_left,
+			limit_top,
+			limit_right,
+			limit_bottom
+		]
+
+
+func _get_limit_bool() -> bool:
+	return (limit_left != -10000000 or limit_top != -10000000) or (limit_right != 10000000 or limit_bottom != 10000000)

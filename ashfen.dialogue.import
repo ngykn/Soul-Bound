@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dy6jywbawiu0a"
+path="res://.godot/imported/ashfen.dialogue-0a2c0d0d4266110feb87c0638d7a904a.tres"
+
+[deps]
+
+source_file="res://ashfen.dialogue"
+dest_files=["res://.godot/imported/ashfen.dialogue-0a2c0d0d4266110feb87c0638d7a904a.tres"]
+
+[params]
+
+defaults=true
