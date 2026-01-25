@@ -79,6 +79,7 @@ Vendor: Cruelty prefers open roads.
 if met_npcs.has("Aren"):
 	=> Aren_Closing_Line
 
+do met_npcs.append("Aren")
 ???? : …Door was open.
 {{GlobalManager.player_name}} : Someone told me to come here.
 ???? : I know.
@@ -100,15 +101,14 @@ Aren : This helps with that.
 {{GlobalManager.player_name}} :  What is it
 Aren : A push.
 #System
-Ability Unlock : [speed=1]Dash acquired
+Item Acquired : [speed=1]Dash Ring acquired
+do ui.inventory._update_inventory("Dash Ring")
 {{GlobalManager.player_name}} : Why give this to me?
 Aren : Because you’re still colored.
 {{GlobalManager.player_name}} : And the guard?
 Aren : They won’t be there.
 {{GlobalManager.player_name}} : How do you know?
 Aren : I made the path he’s standing on.
-do ui.inventory._update_inventory("Dash Ring")
-do met_npcs.append("Aren")
 => Aren_Closing_Line
 
 ~ Aren_Closing_Line

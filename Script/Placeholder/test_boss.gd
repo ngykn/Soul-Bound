@@ -8,6 +8,7 @@ const despair : PackedScene = preload("res://Entity/Enemy/Boss/despair.tscn")
 var current_enemy = ""
 
 func _ready():
+	super._ready()
 	camera.lock_at($Marker2D.global_position)	
 	
 	var viewport_size := get_viewport_rect().size

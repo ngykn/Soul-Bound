@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 signal cutscene_movement_finished
-
+signal dead
 @export_category("Health")
 @export var health := GlobalManager.player_life
 
@@ -243,6 +243,8 @@ func _handle_hit(instance : Node2D) -> void:
 	if health <= 0:
 		is_dead = true
 		animation_manager.player_dead()
+		print("Player Dead")
+		emit_signal("dead")
 	
 	is_hurt = false
 

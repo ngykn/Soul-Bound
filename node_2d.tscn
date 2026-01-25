@@ -2090,9 +2090,8 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_gr2ho")
 script = ExtResource("1_oqqxk")
 
-[node name="UI2" parent="." instance=ExtResource("3_o6mmx")]
-
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 anchors_preset = 15
@@ -2110,6 +2109,9 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Scene"
+
+[node name="UI2" parent="." instance=ExtResource("3_o6mmx")]
+mouse_filter = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 use_parent_material = true
