@@ -19,7 +19,7 @@ var is_vulnerable : bool = false
 @onready var sprite = $Sprite2D
 
 func _ready():
-	if GlobalReferences.killed_apathy.has(id):
+	if GlobalReferences.killed_enemy.has(id):
 		queue_free()
 
 # =========================
@@ -70,7 +70,7 @@ func _handle_vulnerable() -> void:
 	is_vulnerable = true
 	collision_shape.set_deferred("disabled", true)
 	sprite.modulate = Color('#ffffff77')
-	GlobalReferences.killed_apathy.append(id)
+	GlobalReferences.killed_enemy.append(id)
 	emit_signal("vulnerable")
 
 func _die() -> void:

@@ -17,6 +17,7 @@ var player: Node2D
 @onready var animation_player = $AnimationPlayer
 @onready var move_timer : Timer = $MoveTimer
 @onready var burst_timer: Timer = $BurstTimer
+@onready var sfx : AudioStreamPlayer2D = $SFX
 
 
 func _ready():

@@ -6,8 +6,11 @@ class_name UI extends Control
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("inventory"):
-		inventory.visible = not inventory.visible
+		show_inventory()
 
 func _process(delta):
 	GlobalManager.player_life = clamp(GlobalManager.player_life,0,100)
 	life_bar.value = GlobalManager.player_life
+
+func show_inventory() -> void:
+	inventory.visible = not inventory.visible

@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://cv0meg87b44st"]
+
+[ext_resource type="Script" path="res://Script/Object/Dummy.gd" id="1_bgie2"]
+[ext_resource type="Texture2D" uid="uid://blua1vgcw1671" path="res://Assets/Object/Training Dummy Sprite Sheet.png" id="1_f1nvm"]
+[ext_resource type="PackedScene" uid="uid://cmisl0n0u57mt" path="res://Overlap/hurtbox.tscn" id="2_kjn2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi1v4"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_sx8t1"]
+resource_name = "Knock_Off"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_lo8q1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0csvu"]
+_data = {
+"Knock_Off": SubResource("Animation_sx8t1"),
+"RESET": SubResource("Animation_lo8q1")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_43no2"]
+radius = 6.0
+height = 24.0
+
+[node name="Dummy" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_bgie2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_qi1v4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("1_f1nvm")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0csvu")
+}
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_kjn2d")]
+collision_layer = 4
+collision_mask = 2
+enemy_groups = Array[String](["blade"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_43no2")
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

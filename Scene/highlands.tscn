@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bkhhnkkyxqrix"]
+[gd_scene load_steps=28 format=3 uid="uid://bkhhnkkyxqrix"]
 
+[ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_8iip8"]
 [ext_resource type="Texture2D" uid="uid://dyuw5q32xm0c8" path="res://Assets/Environment/Floors_Tiles.png" id="1_ml0wr"]
 [ext_resource type="Script" path="res://Script/Sceme/highlands.gd" id="1_or4l7"]
 [ext_resource type="Texture2D" uid="uid://dpm5qt4mb31gs" path="res://Assets/Environment/Furniture.png" id="2_4dohw"]
@@ -13,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="9_00vmr"]
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="11_ejsfo"]
 [ext_resource type="PackedScene" uid="uid://bnrwj5otmodc3" path="res://Overlap/cave_entry.tscn" id="12_0x1r3"]
+[ext_resource type="PackedScene" uid="uid://betw6tyuc6ymp" path="res://Screen Overlay Effects/fog_effect.tscn" id="15_7u0mf"]
+[ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="16_bt7ad"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7hm4"]
+shader = ExtResource("1_8iip8")
+shader_parameter/enabled = true
+shader_parameter/desaturation_amount = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35mcf"]
 texture = ExtResource("1_ml0wr")
@@ -3810,17 +3818,17 @@ sources/4 = SubResource("TileSetAtlasSource_31o07")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_368ee"]
 texture = ExtResource("6_shpci")
+12:0/size_in_atlas = Vector2i(1, 2)
+12:0/0 = 0
+12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:0/0/physics_layer_0/angular_velocity = 0.0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, 8, 2, 8, 16, -8, 16)
 3:0/size_in_atlas = Vector2i(3, 6)
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 32)
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, 8, 2, 8, 16, -8, 16)
-12:0/size_in_atlas = Vector2i(1, 2)
-12:0/0 = 0
-12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-12:0/0/physics_layer_0/angular_velocity = 0.0
-12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, 8, 2, 8, 16, -8, 16)
 
 [sub_resource type="TileSet" id="TileSet_6qro7"]
 physics_layer_0/collision_layer = 1
@@ -3833,12 +3841,14 @@ size = Vector2(80, 20)
 size = Vector2(64, 20)
 
 [node name="Highland" type="Node2D" node_paths=PackedStringArray("entry_point")]
+material = SubResource("ShaderMaterial_i7hm4")
 script = ExtResource("1_or4l7")
 entry_point = NodePath("Entry")
 
 [node name="UI" parent="." instance=ExtResource("2_mx4t0")]
 
 [node name="TileMap" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = SubResource("TileSet_gvm2q")
 format = 2
 layer_0/name = "Path"
@@ -3856,10 +3866,11 @@ offset_bottom = 1152.0
 
 [node name="Obstacle" type="TileMap" parent="."]
 y_sort_enabled = true
+use_parent_material = true
 tile_set = SubResource("TileSet_6qro7")
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(4587571, 786432, 0, 4522035, 196608, 0, 4653107, 196608, 0, 4587570, 786432, 0, 4587569, 786432, 0, 4587566, 786432, 0, 4587567, 786432, 0, 4522032, 196608, 0, 4587568, 786432, 0, 4653104, 196608, 0, 4587563, 786432, 0, 4587564, 786432, 0, 4522029, 196608, 0, 4587565, 786432, 0, 4653101, 196608, 0, 4587561, 786432, 0, 4522026, 196608, 0, 4587562, 786432, 0, 4653098, 196608, 0, 4522005, 196608, 268435456, 4587543, 786432, 268435456, 4587542, 786432, 268435456, 4587541, 786432, 268435456, 4653077, 196608, 268435456, 4522008, 196608, 268435456, 4587546, 786432, 268435456, 4587545, 786432, 268435456, 4587544, 786432, 268435456, 4653080, 196608, 268435456, 4522011, 196608, 268435456, 4587549, 786432, 268435456, 4587548, 786432, 268435456, 4587547, 786432, 268435456, 4653083, 196608, 268435456, 4522014, 196608, 268435456, 4587550, 786432, 268435456, 4653086, 196608, 268435456, 4522020, 196608, 0, 4587556, 786432, 0, 4653092, 196608, 0, 4587557, 786432, 0, 4587558, 786432, 0, 4522023, 196608, 0, 4587559, 786432, 0, 4653095, 196608, 0, 4587560, 786432, 0, 4784179, 196608, 0, 4784176, 196608, 0, 4784173, 196608, 0, 4784170, 196608, 0, 4784167, 196608, 0, 4784164, 196608, 0, 4784158, 196608, 0, 4784155, 196608, 0, 4784152, 196608, 0, 4784149, 196608, 0)
+layer_0/tile_data = PackedInt32Array(4587571, 786432, 0, 4522035, 196608, 0, 4653107, 196608, 0, 4587570, 786432, 0, 4587569, 786432, 0, 4587566, 786432, 0, 4587567, 786432, 0, 4522032, 196608, 0, 4587568, 786432, 0, 4653104, 196608, 0, 4587563, 786432, 0, 4587564, 786432, 0, 4522029, 196608, 0, 4587565, 786432, 0, 4653101, 196608, 0, 4587561, 786432, 0, 4522026, 196608, 0, 4587562, 786432, 0, 4653098, 196608, 0, 4522005, 196608, 268435456, 4587543, 786432, 268435456, 4587542, 786432, 268435456, 4587541, 786432, 268435456, 4653077, 196608, 268435456, 4522008, 196608, 268435456, 4587546, 786432, 268435456, 4587545, 786432, 268435456, 4587544, 786432, 268435456, 4653080, 196608, 268435456, 4522011, 196608, 268435456, 4587549, 786432, 268435456, 4587548, 786432, 268435456, 4587547, 786432, 268435456, 4653083, 196608, 268435456, 4522014, 196608, 268435456, 4587550, 786432, 268435456, 4653086, 196608, 268435456, 4522020, 196608, 0, 4587556, 786432, 0, 4653092, 196608, 0, 4587557, 786432, 0, 4587558, 786432, 0, 4522023, 196608, 0, 4587559, 786432, 0, 4653095, 196608, 0, 4587560, 786432, 0, 4784179, 196608, 0, 4784176, 196608, 0, 4784173, 196608, 0, 4784170, 196608, 0, 4784167, 196608, 0, 4784164, 196608, 0, 4784158, 196608, 0, 4784155, 196608, 0, 4784152, 196608, 0, 4784149, 196608, 0, 4390995, 786432, 0, 4390994, 786432, 0, 4390993, 786432, 0, 4390992, 786432, 0, 4390991, 786432, 0, 4390990, 786432, 0, 4390989, 786432, 0)
 
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(536, 1104)
@@ -3922,6 +3933,13 @@ to_cave_chunk = "res://Scene/highlands_cave.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/CaveEntry"]
 shape = SubResource("RectangleShape2D_i0idw")
+
+[node name="Fog" parent="." instance=ExtResource("15_7u0mf")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_bt7ad")
+autoplay = true
+bus = &"BGM"
 
 [editable path="Exit/ExitPoint"]
 [editable path="Exit/ExitPoint2"]

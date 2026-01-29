@@ -49,7 +49,7 @@ var dash_cooldown := 0.0
 var dash_dir := Vector2.ZERO
 
 
-func _ready():
+func _ready() -> void:
 	hurtbox.hurt.connect(_handle_hit)
 	interaction_area.npc_entered.connect(_handle_interaction_area.bind("entered"))
 	interaction_area.npc_exited.connect(_handle_interaction_area.bind("exited"))
@@ -57,7 +57,7 @@ func _ready():
 	
 	face_cardinal_direction(starting_face_direction)
 
-func _unhandled_key_input(event):
+func _unhandled_key_input(event) -> void:
 	if is_dead:
 		return
 
@@ -65,14 +65,14 @@ func _unhandled_key_input(event):
 	if !move_mode == MoveMode.PLAYER and !GameState.input_enabled:
 		return
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and GlobalReferences.inventory.has("Sword"):
 		_handle_attack()
 
 	if Input.is_action_just_pressed("interact"):
 		_handle_interaction()
 
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if is_dead:
 		return
 
@@ -100,7 +100,7 @@ func _physics_process(delta):
 # =========================
 
 
-func start_cutscene_move(target_pos: Vector2): ## Player Cutscene.
+func start_cutscene_move(target_pos: Vector2) -> void: ## Player Cutscene.
 	move_mode = MoveMode.CUTSCENE
 	cutscene_target = target_pos
 	cutscene_finished = false
@@ -130,7 +130,7 @@ func player_light(enabled : bool, size : float = 1.0) -> void:
 # INTERNAL
 # ========================
 
-func _handle_player_movement():
+func _handle_player_movement() -> void:
 	if !GameState.input_enabled or is_attacking:
 		move_input = Vector2.ZERO
 		return
@@ -150,7 +150,7 @@ func _handle_player_movement():
 
 	move_input = input_dir.normalized() * speed
 
-func _try_dash():
+func _try_dash() -> void:
 	if is_attacking or is_dashing or dash_cooldown > 0:
 		return
 
@@ -165,7 +165,7 @@ func _try_dash():
 
 	#animation_manager.play_dash()
 
-func _handle_dash(delta):	
+func _handle_dash(delta) -> void:
 	dash_time -= delta
 	move_input = dash_dir * DASH_SPEED
 
@@ -175,7 +175,7 @@ func _handle_dash(delta):
 		animation_manager.return_to_movement()
 
 
-func _handle_cutscene_movement(): ##Cutscene movement
+func _handle_cutscene_movement() -> void: ##Cutscene movement
 	var dir := cutscene_target - global_position
 
 	if dir.length() <= STOP_DISTANCE:
@@ -243,7 +243,6 @@ func _handle_hit(instance : Node2D) -> void:
 	if health <= 0:
 		is_dead = true
 		animation_manager.player_dead()
-		print("Player Dead")
 		emit_signal("dead")
 	
 	is_hurt = false
@@ -251,7 +250,7 @@ func _handle_hit(instance : Node2D) -> void:
 func _face_direction(direction : Vector2) -> void:
 	animation_manager._update_direction(direction)
 
-func _clamp_to_camera():
+func _clamp_to_camera() -> void:
 	if camera == null:
 		return
 

@@ -1,0 +1,158 @@
+[gd_scene load_steps=24 format=3 uid="uid://bvrew10cfd416"]
+
+[ext_resource type="Texture2D" uid="uid://c406h4frsnnit" path="res://Assets/UI/Main Meunu/bgmenu.png" id="1_1aqdp"]
+[ext_resource type="Script" path="res://Script/UI/main_menu.gd" id="1_g0dcf"]
+[ext_resource type="Texture2D" uid="uid://cl005lsx8qcv1" path="res://Assets/UI/Main Meunu/Logo/tile000.png" id="2_yis1e"]
+[ext_resource type="Texture2D" uid="uid://idm3wmvtrktm" path="res://Assets/UI/Main Meunu/Logo/tile001.png" id="3_ny3gg"]
+[ext_resource type="Texture2D" uid="uid://bwb4hxm45ajm" path="res://Assets/UI/Main Meunu/Logo/tile002.png" id="4_5p0k2"]
+[ext_resource type="Texture2D" uid="uid://d4akgicwnisc3" path="res://Assets/UI/Main Meunu/Logo/tile003.png" id="5_j6sc1"]
+[ext_resource type="Texture2D" uid="uid://uq3j3ur7823d" path="res://Assets/UI/Main Meunu/Logo/tile004.png" id="6_l5tg4"]
+[ext_resource type="Texture2D" uid="uid://6emq4781v3ro" path="res://Assets/UI/Main Meunu/Logo/tile005.png" id="7_wfqnq"]
+[ext_resource type="Texture2D" uid="uid://cf8ggmn2ien4e" path="res://Assets/UI/Main Meunu/Logo/tile006.png" id="8_x6ycy"]
+[ext_resource type="Texture2D" uid="uid://rgstifk80vpv" path="res://Assets/UI/Main Meunu/Logo/tile007.png" id="9_cguga"]
+[ext_resource type="Texture2D" uid="uid://dn62w3eiou33w" path="res://Assets/UI/Main Meunu/Logo/tile008.png" id="10_4fakw"]
+[ext_resource type="Texture2D" uid="uid://djhx2jp007m2e" path="res://Assets/UI/Main Meunu/Logo/tile009.png" id="11_ragel"]
+[ext_resource type="Texture2D" uid="uid://b4xbtyu1nbllv" path="res://Assets/UI/Main Meunu/Buttons2.png" id="12_8osma"]
+[ext_resource type="AudioStream" uid="uid://ca7tmw8b10n0d" path="res://Assets/BGM/the-white-lion-10379.wav" id="14_bjn8x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ixkk"]
+texture = ExtResource("1_1aqdp")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_cx6cf"]
+frames = 10
+speed_scale = 10.0
+frame_0/texture = ExtResource("2_yis1e")
+frame_1/texture = ExtResource("3_ny3gg")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_5p0k2")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_j6sc1")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_l5tg4")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_wfqnq")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_x6ycy")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("9_cguga")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("10_4fakw")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("11_ragel")
+frame_9/duration = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce3ch"]
+atlas = ExtResource("12_8osma")
+region = Rect2(278, 146, 183, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lccm2"]
+atlas = ExtResource("12_8osma")
+region = Rect2(29, 19, 112.567, 31.5303)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grejc"]
+atlas = ExtResource("12_8osma")
+region = Rect2(156, 21, 110, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6qos"]
+atlas = ExtResource("12_8osma")
+region = Rect2(31, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccula"]
+atlas = ExtResource("12_8osma")
+region = Rect2(158, 66, 110, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax3ty"]
+atlas = ExtResource("12_8osma")
+region = Rect2(29, 111, 112, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_627en"]
+atlas = ExtResource("12_8osma")
+region = Rect2(156, 113, 110, 30)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g0dcf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5ixkk")
+
+[node name="MarginContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Logo" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/Logo"]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = SubResource("AnimatedTexture_cx6cf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/Logo"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_ce3ch")
+
+[node name="Buttons" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_lccm2")
+texture_pressed = SubResource("AtlasTexture_grejc")
+stretch_mode = 0
+
+[node name="Setting" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_b6qos")
+texture_pressed = SubResource("AtlasTexture_ccula")
+stretch_mode = 0
+
+[node name="Exit" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_ax3ty")
+texture_pressed = SubResource("AtlasTexture_627en")
+stretch_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_bjn8x")
+autoplay = true
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Buttons/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Buttons/Exit" to="." method="_on_exit_pressed"]

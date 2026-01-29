@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://iw68fntv8oyt"]
+[gd_scene load_steps=29 format=3 uid="uid://iw68fntv8oyt"]
 
 [ext_resource type="Texture2D" uid="uid://dyuw5q32xm0c8" path="res://Assets/Environment/Floors_Tiles.png" id="1_h1kew"]
 [ext_resource type="Script" path="res://Script/Sceme/southfield.gd" id="1_nn8j5"]
+[ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_opk42"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="2_j58sn"]
 [ext_resource type="Texture2D" uid="uid://cdoqqv3muwwr6" path="res://Assets/Environment/Wall_Tiles.png" id="2_p2lwu"]
 [ext_resource type="Texture2D" uid="uid://yhaj5xi7a7y" path="res://Assets/Environment/Water_tiles.png" id="3_kcrt7"]
@@ -13,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="10_2ukp8"]
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="11_ncy3r"]
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="12_3w5ob"]
+[ext_resource type="PackedScene" uid="uid://betw6tyuc6ymp" path="res://Screen Overlay Effects/fog_effect.tscn" id="15_qgs3g"]
+[ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="16_lxx0w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bg65"]
+shader = ExtResource("1_opk42")
+shader_parameter/enabled = true
+shader_parameter/desaturation_amount = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l81ql"]
 texture = ExtResource("1_h1kew")
@@ -3304,12 +3312,14 @@ size = Vector2(96, 20)
 
 [node name="Southfield" type="Node2D" node_paths=PackedStringArray("entry_point")]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_1bg65")
 script = ExtResource("1_nn8j5")
 entry_point = NodePath("Entry")
 
 [node name="UI" parent="." instance=ExtResource("2_j58sn")]
 
 [node name="TileMap" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = SubResource("TileSet_eht3i")
 format = 2
 layer_0/name = "Path"
@@ -3323,6 +3333,7 @@ layer_3/tile_data = PackedInt32Array(4128781, 3, 35, 4194317, 3, 36, 4259853, 3,
 
 [node name="Obstacle" type="TileMap" parent="."]
 y_sort_enabled = true
+use_parent_material = true
 tile_set = SubResource("TileSet_xip7h")
 format = 2
 layer_0/name = "Tress"
@@ -3333,10 +3344,10 @@ layer_1/y_sort_enabled = true
 layer_1/tile_data = PackedInt32Array()
 
 [node name="House3" parent="." instance=ExtResource("5_wssvf")]
-position = Vector2(744, 528)
+position = Vector2(672, 520)
 
 [node name="House4" parent="." instance=ExtResource("5_wssvf")]
-position = Vector2(1136, 144)
+position = Vector2(1136, 176)
 
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(176, 192)
@@ -3404,6 +3415,12 @@ entry_point = "South"
 
 [node name="CollisionShape2D" parent="ExitPoint2/ExitPoint3" index="0"]
 shape = SubResource("RectangleShape2D_lupw6")
+
+[node name="Fog" parent="." instance=ExtResource("15_qgs3g")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_lxx0w")
+autoplay = true
 
 [editable path="ExitPoint2/ExitPoint"]
 [editable path="ExitPoint2/ExitPoint2"]

@@ -1298,6 +1298,7 @@ sources/7 = SubResource("TileSetAtlasSource_fx0do")
 script = ExtResource("1_6ljgx")
 
 [node name="TileMap" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = SubResource("TileSet_544be")
 format = 2
 layer_0/name = "Wall"
@@ -1313,3 +1314,4 @@ layer_5/name = "Props Overlay 2"
 layer_5/tile_data = PackedInt32Array()
 
 [node name="Door" parent="." instance=ExtResource("5_bbyfk")]
+use_parent_material = true

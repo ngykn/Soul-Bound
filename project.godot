@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Soul Bound"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -105,7 +105,7 @@ inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/chapter_one.dialogue", "res://Dialogue/apathy.dialogue", "res://Dialogue/npc_test.dialogue", "res://Dialogue/middlehaven_npc.dialogue", "res://Dialogue/player.dialogue", "res://ashfen.dialogue", "res://Dialogue/ashenfen_apathy.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/chapter_one.dialogue", "res://Dialogue/apathy.dialogue", "res://Dialogue/npc_test.dialogue", "res://Dialogue/middlehaven_npc.dialogue", "res://Dialogue/player.dialogue", "res://ashfen.dialogue", "res://Dialogue/ashenfen_apathy.dialogue", "res://Dialogue/Tutorial.dialogue", "res://ashfencave.dialogue", "res://Dialogue/cruelty_cave.dialogue", "res://Dialogue/despair.dialogue", "res://Dialogue/ending.dialogue")
 
 [layer_names]
 

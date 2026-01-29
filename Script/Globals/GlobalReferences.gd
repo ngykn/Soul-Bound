@@ -1,7 +1,7 @@
 extends Node
 
-var inventory : Array[String] = ["Dash Ring"]
-var killed_apathy : Array[String]= ["ashfen"]
+var inventory : Array[String] = []
+var killed_enemy : Array[String]= []
 
 var inventory_items : Dictionary = {
 	"Health" : [
@@ -17,6 +17,11 @@ var inventory_items : Dictionary = {
 	"Emberlight" : [
 		preload("res://Assets/UI/Item/GlowingNecklaceNormal.png"),
 		preload("res://Assets/UI/Item/GlowingNecklacePressed.png"),
+		false
+		],
+	"Sword" : [
+		preload("res://Assets/UI/Item/SwordNormal.png"),
+		preload("res://Assets/UI/Item/SwordPressed.png"),
 		false
 	]
 }

@@ -1,6 +1,6 @@
 extends TextureRect
 
-signal used_item
+signal used_item(item : String)
 
 @onready var focus = $Focus
 @onready var texture_button = $TextureButton
@@ -16,6 +16,9 @@ func _ready():
 	mouse_entered.connect(_on_focus.bind(true))
 	mouse_exited.connect(_on_focus.bind(false))
 
+################
+# PUBLIC API   #
+################
 func update_item(item : String, arrange : bool = false) -> void:
 	if !GlobalReferences.inventory_items.has(item) or occupied:
 		printerr("Item Not Found: " + item)
@@ -38,8 +41,8 @@ func _use_item():
 		return
 
 	if i[2]:
+		emit_signal("used_item", current_item)
 		_clear()
-		emit_signal("used_item")
 
 func _clear(erase : bool = true) -> void:
 	if erase:

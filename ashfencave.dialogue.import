@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://erwm100xc56d"
+path="res://.godot/imported/ashfencave.dialogue-f692d1a08ee8af5fc1756dc9886f0294.tres"
+
+[deps]
+
+source_file="res://ashfencave.dialogue"
+dest_files=["res://.godot/imported/ashfencave.dialogue-f692d1a08ee8af5fc1756dc9886f0294.tres"]
+
+[params]
+
+defaults=true

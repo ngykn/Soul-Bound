@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://4tjl1akoa4lr"]
+[gd_scene load_steps=5 format=3 uid="uid://4tjl1akoa4lr"]
 
 [ext_resource type="Script" path="res://Script/UI/second_scene.gd" id="1_5su1k"]
+[ext_resource type="Texture2D" uid="uid://c406h4frsnnit" path="res://Assets/UI/Main Meunu/bgmenu.png" id="2_3smob"]
+[ext_resource type="AudioStream" uid="uid://ca7tmw8b10n0d" path="res://Assets/BGM/the-white-lion-10379.wav" id="3_fuibv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_86i3j"]
+texture = ExtResource("2_3smob")
 
 [node name="SecondScene" type="Control"]
 layout_mode = 3
@@ -10,6 +15,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5su1k")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_86i3j")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -44,6 +58,10 @@ text = "Save"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Randomize"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fuibv")
+autoplay = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Randomize" to="." method="_on_randomize_pressed"]

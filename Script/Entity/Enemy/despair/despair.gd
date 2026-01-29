@@ -1,5 +1,6 @@
 class_name Despair extends CharacterBody2D
 
+signal vulnerable
 signal dead
 
 @onready var animation_player = $AnimationPlayer
@@ -9,13 +10,20 @@ signal dead
 @onready var arm_left := $Arm/ArmLeft
 @onready var arm_right := $Arm/ArmRight
 
+@onready var sprite = $Sprite2D
+@onready var collision_shape = $CollisionShape2D
+
 @export var basic_interval := 1.2
 @export var echo_interval := 5.0
 @export var orbit_interval := 14.0
 
+@export var dialogue : DialogueResource
+@export var title := ""
+
 var life := 3
 var _is_dead := false
 var _is_hurt := false
+var _is_vulnerable := false
 var orb_scene := preload("res://Object/apathy_orb.tscn")
 var hollow_bullet_scene := preload("res://Object/orb_bullet.tscn")
 var empty_orbit_scene := preload("res://orbit_controller.tscn")
@@ -32,6 +40,7 @@ var recovery := false
 var _is_attacking := false
 var player : Player
 
+var active := false
 
 func _ready():
 	await get_tree().process_frame
@@ -39,6 +48,9 @@ func _ready():
 
 
 func _process(delta):
+	if not active or _is_vulnerable:
+		return
+
 	if _is_attacking or not player or recovery or _is_dead:
 		return
 
@@ -137,6 +149,20 @@ func arm_to_neutral():
 
 	await tween.finished
 
+func _vulnerable() -> void:
+	_is_vulnerable = true
+	collision_shape.set_deferred("disabled", true)
+	sprite.modulate = Color('#ffffff77')
+	emit_signal("vulnerable")
+
+func _handle_death() -> void:
+	_is_dead = true
+	if dialogue:
+		GlobalFunction.costumize_show_dialogue(dialogue, title)
+		await GlobalFunction.dialogue_ended
+
+	animation_player.play("death")
+	emit_signal("dead")
 
 func _on_hurtbox_hurt(entity):
 	if _is_dead or _is_hurt:
@@ -147,11 +173,12 @@ func _on_hurtbox_hurt(entity):
 	hurt_animation.play("hurt")
 	
 	life -= 1
-	if life == 0:
-		_is_dead = true
-		animation_player.play("death")
+	if life <= 0:
 		$Arm.hide()
-		emit_signal("dead")
-	
+		if _is_vulnerable:
+			_handle_death()
+			return
+		_vulnerable()
+
 	await hurt_animation.animation_finished
 	_is_hurt = false

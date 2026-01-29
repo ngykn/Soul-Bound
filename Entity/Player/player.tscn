@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dm6f4jjlwp6bh" path="res://Assets/Entities/Player/Pierce_Down.png" id="5_f10a3"]
 [ext_resource type="Texture2D" uid="uid://54pslsjch6i" path="res://Assets/Entities/Player/Pierce_Side.png" id="6_5qndn"]
 [ext_resource type="Texture2D" uid="uid://c5qyvm8hog88w" path="res://Assets/Entities/Player/Pierce_Top.png" id="7_3u4uw"]
+[ext_resource type="Texture2D" uid="uid://daowt22nkgouk" path="res://Assets/Entities/Player/Death_Down.png" id="8_icys1"]
+[ext_resource type="Texture2D" uid="uid://2bnqtrv25l16" path="res://Assets/Entities/Player/Death_Side.png" id="9_pml7a"]
+[ext_resource type="Texture2D" uid="uid://c4o1ofilwwro4" path="res://Assets/Entities/Player/Death_Up.png" id="10_e8o3b"]
 [ext_resource type="Texture2D" uid="uid://dqrf3vh1alkw5" path="res://Assets/Entities/Player/Idle_Down.png" id="11_gyh2s"]
 [ext_resource type="Texture2D" uid="uid://btngex3xiwemm" path="res://Assets/Entities/Player/Idle_Side.png" id="12_h5vvf"]
 [ext_resource type="Texture2D" uid="uid://q63hjdjcm3we" path="res://Assets/Entities/Player/Idle_Up.png" id="13_gkxkj"]
@@ -13,12 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://dbldb1kbmh43h" path="res://Assets/Entities/Player/Run_Down.png" id="14_1ig6f"]
 [ext_resource type="PackedScene" uid="uid://cmisl0n0u57mt" path="res://Overlap/hurtbox.tscn" id="14_b4s8b"]
 [ext_resource type="Texture2D" uid="uid://duiwhcp6xyj0x" path="res://Assets/Entities/Player/Run_Side.png" id="15_v3eve"]
-[ext_resource type="Texture2D" uid="uid://bmdjj72fajh8t" path="res://Place Holder Art/Player/dead/Death_Up-Sheet.png" id="16_i1o2a"]
 [ext_resource type="Texture2D" uid="uid://opdl5xvph6kc" path="res://Assets/Entities/Player/Run_Up.png" id="16_omt4e"]
-[ext_resource type="Texture2D" uid="uid://cjyyi5juwr240" path="res://Place Holder Art/Player/dead/Death_Down-Sheet.png" id="17_0xwna"]
 [ext_resource type="Texture2D" uid="uid://cutottkhcgg5b" path="res://Assets/Entities/Player/Walk_Down.png" id="17_rvx8m"]
 [ext_resource type="Texture2D" uid="uid://ckulaxmoe37we" path="res://Assets/Entities/Player/Walk_Side.png" id="18_bnf5h"]
-[ext_resource type="Texture2D" uid="uid://c27y4yiieklex" path="res://Place Holder Art/Player/dead/Death_Side-Sheet.png" id="18_ok8js"]
 [ext_resource type="PackedScene" uid="uid://2ypuew1kwj08" path="res://Overlap/hitbox.tscn" id="18_ripo8"]
 [ext_resource type="Texture2D" uid="uid://dlioqk64ohb34" path="res://Assets/Entities/Player/Walk_Up.png" id="19_h5bxq"]
 
@@ -324,7 +324,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("17_0xwna")]
+"values": [ExtResource("8_icys1")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -424,7 +424,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("18_ok8js")]
+"values": [ExtResource("9_pml7a")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -476,7 +476,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("16_i1o2a")]
+"values": [ExtResource("10_e8o3b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

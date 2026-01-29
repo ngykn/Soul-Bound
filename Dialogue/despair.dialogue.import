@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b1epveydd8l1p"
+path="res://.godot/imported/despair.dialogue-4c1026def54494f45f426f93e83a3c38.tres"
+
+[deps]
+
+source_file="res://Dialogue/despair.dialogue"
+dest_files=["res://.godot/imported/despair.dialogue-4c1026def54494f45f426f93e83a3c38.tres"]
+
+[params]
+
+defaults=true

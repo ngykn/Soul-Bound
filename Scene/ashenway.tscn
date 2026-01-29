@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bfqrlwas7cmiq"]
+[gd_scene load_steps=36 format=3 uid="uid://bfqrlwas7cmiq"]
 
 [ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_3f8v6"]
 [ext_resource type="Script" path="res://Script/Sceme/ashenway.gd" id="1_svwap"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://deylvo4p2fhpf" path="res://Rocks.png" id="5_j5fqp"]
 [ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="9_favjm"]
 [ext_resource type="PackedScene" uid="uid://cfpp0lwt61vtj" path="res://Environment/House/house_3.tscn" id="10_ewgpo"]
+[ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="10_fwi42"]
 [ext_resource type="Script" path="res://Script/Object/Camera.gd" id="10_is3nt"]
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="14_jkex1"]
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="15_aokui"]
@@ -4038,6 +4039,7 @@ script = ExtResource("1_svwap")
 entry_point = NodePath("EntryPoint")
 
 [node name="UI" parent="." instance=ExtResource("2_l51oc")]
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -4187,6 +4189,10 @@ entry_point = "East"
 [node name="CollisionShape2D" parent="ExitPoint/ExitPoint5" index="0"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_kirxu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fwi42")
+autoplay = true
 
 [editable path="House/House3"]
 [editable path="ExitPoint/ExitPoint"]

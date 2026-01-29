@@ -2,12 +2,17 @@ extends CharacterBody2D
 
 signal dead
 
+@export var ID := "cruelty"
+
 @export var life : = 3
 
 @export var min_x : int
 @export var min_y : int
 @export var max_x : int
 @export var max_y : int
+
+@export var dialogue : DialogueResource
+@export var title := ""
 
 @onready var movement_anim = $MovementAnimation
 @onready var attack_anim: AnimationPlayer = $AttackAnimation
@@ -49,10 +54,12 @@ func start() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not target or _is_dead:
+		velocity = Vector2.ZERO
 		return
+		
+	_handle_animation()
 
 	#_flip_sprite()
-	_handle_animation()
 	_handle_ai(delta)
 
 	if can_aim and not is_attacking:
@@ -224,9 +231,16 @@ func _fire_burst() -> void:
 
 
 func _handle_death() -> void:
+	_handle_animation()
+
+	if dialogue:
+		GlobalFunction.costumize_show_dialogue(dialogue, title)
+		await GlobalFunction.dialogue_ended
+	
 	await _tween_arm_to_neutral()
 	movement_anim.play("dead")
 	attack_anim.play("dead")
+	GlobalReferences.killed_enemy.append(ID)
 	emit_signal("dead")
 
 func _on_hurtbox_hurt(entity):

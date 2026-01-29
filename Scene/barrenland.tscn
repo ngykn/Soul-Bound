@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3cd681wj8kn1"]
+[gd_scene load_steps=29 format=3 uid="uid://b3cd681wj8kn1"]
 
 [ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_sdkqc"]
 [ext_resource type="Script" path="res://Script/Sceme/scene.gd" id="2_7x7gd"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://betw6tyuc6ymp" path="res://Screen Overlay Effects/fog_effect.tscn" id="13_g0fj8"]
 [ext_resource type="Script" path="res://Prototype/client_preference.gd" id="14_ldyra"]
 [ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="15_hmvh0"]
+[ext_resource type="AudioStream" uid="uid://ov7erhbudctu" path="res://Assets/BGM/Fair_Fight_(Battle).wav" id="18_73ldj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_877mb"]
 shader = ExtResource("1_sdkqc")
@@ -2358,6 +2359,9 @@ button_pressed = true
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_hmvh0")
 autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_73ldj")
 
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="vulnerable" from="Apathy" to="." method="_on_apathy_vulnerable"]

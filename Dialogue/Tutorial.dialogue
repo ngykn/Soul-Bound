@@ -1,0 +1,86 @@
+~ introduce
+Narrator: It’s quiet today.
+Narrator: Too quiet, maybe—but calm all the same.
+Narrator: Take a look around.
+
+~ move
+Narrator: Go ahead.
+Narrator: Stretch your legs.
+Narrator: Nothing is chasing you.
+=> END
+
+~ go_to_npc
+Narrator: Someone’s nearby.
+Narrator: They might have something to say.
+=> END
+
+~ npc
+if met_npcs.has("Lume"):
+	=> npc_interacted
+
+Lume : Oh, hi.
+Lume: Nice day, isn’t it?
+Lume: Things have been… slower lately.
+Lume: But maybe that’s just me.
+Lume: If you’re heading out later, you should warm up first.
+Lume: Allan’s over there.
+Lume: He helps everyone get started.
+do met_npcs.append("Lume")
+
+~ go_to_trainer
+Narrator: Seems reasonable.
+Narrator: Go see him.
+=> END
+
+~ npc_interacted
+Lume: He helps everyone get started.
+=> END
+
+~ npc_2
+Kie: Hi
+=> END
+
+~ trainer
+if met_npcs.has("Lume"):
+	=> first_trainer_interaction
+Allan: Hi. 
+=> END
+
+~ first_trainer_interaction
+Allan: So… Lume sent you.
+Allan: Alright.
+Allan: Before we start—[wait=0.3]
+	I can see you’re hurt.
+Allan: Take this.
+Item Acquired : [speed=1]Health acquired
+do ui.inventory._update_inventory("Health")
+do current_tutorial = tutorial_list.INVENTORY
+Narrator: If you need to check what you’re carrying—[wait=0.3]
+	Pause for a moment.
+
+Narrator: Press ESC to open your inventory.
+=> END
+
+~ second_trainer_interaction
+Allan: Better?
+Allan: Good.
+Allan: Now we can train.
+Allan: You’ll need this.
+Item Acquired : [speed=1]Sword acquired
+do ui.inventory._update_inventory("Sword")
+Allan: It’s nothing special.
+Allan: But it’s reliable.
+Allan: Over there.
+Allan: Hit the dummy.
+Allan: Five times.
+Narrator: You’re ready.
+Narrator: When you want to strike— [wait=0.3]
+	Press Z.
+=> END
+
+~ end
+Allan: That’s enough.
+Allan: You’re set.
+Narrator: All set.
+Narrator: Enjoy the calm while it lasts.
+=> END

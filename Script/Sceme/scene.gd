@@ -12,8 +12,8 @@ func _ready() -> void:
 	super._ready()
 	await TransitionManager.scene_transition_finished
 	GlobalFunction.costumize_show_dialogue(load("res://Dialogue/chapter_one.dialogue"),"mc_awoke")
-	strange_man_area.player_entered.connect(_strange_man_cutscene)
-	apathy_area.player_entered.connect(_apathy_cutscene)
+	#strange_man_area.player_entered.connect(_strange_man_cutscene)
+	#apathy_area.player_entered.connect(_apathy_cutscene)
 
 func _strange_man_cutscene() -> void:
 	if _have_met_strange_man:
@@ -37,6 +37,7 @@ func _apathy_cutscene() -> void:
 	GlobalFunction.costumize_show_dialogue(load("res://Dialogue/chapter_one.dialogue"),"apathy_intro")
 	await GlobalFunction.dialogue_ended
 	$Apathy.dramatic_attack()
+	$AudioStreamPlayer.play()
 
 #Cut Scene
 func _on_npc_dialogue_ended() -> void:
@@ -50,3 +51,7 @@ func _on_apathy_vulnerable():
 
 func _on_button_pressed():
 	$Window.visible = not $Window.visible
+
+func _player_dead() -> void:
+	GlobalManager.player_life = 100
+	get_tree().reload_current_scene()

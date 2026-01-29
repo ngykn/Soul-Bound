@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cwkpn7ley4nuo"]
+[gd_scene load_steps=29 format=3 uid="uid://cwkpn7ley4nuo"]
 
 [ext_resource type="Texture2D" uid="uid://dyuw5q32xm0c8" path="res://Assets/Environment/Floors_Tiles.png" id="1_k41iu"]
 [ext_resource type="Script" path="res://Script/Sceme/westfield.gd" id="1_kju8o"]
+[ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_nxf46"]
 [ext_resource type="Texture2D" uid="uid://cdoqqv3muwwr6" path="res://Assets/Environment/Wall_Tiles.png" id="2_dn2dd"]
 [ext_resource type="Texture2D" uid="uid://f5sdx7cuyen" path="res://Assets/Environment/Wall_Variations.png" id="3_xcr64"]
 [ext_resource type="Texture2D" uid="uid://yhaj5xi7a7y" path="res://Assets/Environment/Water_tiles.png" id="3_y6hcs"]
@@ -14,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="12_jl2lq"]
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="12_v646x"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="14_bb21g"]
+[ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="16_wcwn8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tca8x"]
+shader = ExtResource("1_nxf46")
+shader_parameter/enabled = true
+shader_parameter/desaturation_amount = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o36sk"]
 texture = ExtResource("1_k41iu")
@@ -3856,12 +3863,14 @@ size = Vector2(160, 20)
 
 [node name="Westfield" type="Node2D" node_paths=PackedStringArray("entry_point")]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_tca8x")
 script = ExtResource("1_kju8o")
 entry_point = NodePath("Entry")
 
 [node name="UI" parent="." instance=ExtResource("14_bb21g")]
 
 [node name="TileMap" type="TileMap" parent="."]
+use_parent_material = true
 tile_set = SubResource("TileSet_8vpit")
 format = 2
 layer_0/name = "Path"
@@ -3873,6 +3882,7 @@ layer_2/tile_data = PackedInt32Array(3604548, 393218, 4, 3670084, 393218, 5, 373
 
 [node name="Obstacle" type="TileMap" parent="."]
 y_sort_enabled = true
+use_parent_material = true
 tile_set = SubResource("TileSet_taxa3")
 format = 2
 layer_0/name = "Trees"
@@ -3888,7 +3898,7 @@ offset_right = 1100.0
 offset_bottom = 1176.0
 
 [node name="House3" parent="." instance=ExtResource("7_1ftvm")]
-position = Vector2(240, 1416)
+position = Vector2(192, 1416)
 
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(432, 344)
@@ -3951,10 +3961,16 @@ shape = SubResource("RectangleShape2D_wxs3q")
 
 [node name="ExitPoint3" parent="ExitPoint" instance=ExtResource("12_jl2lq")]
 position = Vector2(640, 0)
-collision_disabled = true
+next_chunk = "res://Scene/highlands.tscn"
+entry_point = "South2"
 
 [node name="CollisionShape2D" parent="ExitPoint/ExitPoint3" index="0"]
 shape = SubResource("RectangleShape2D_1nq5e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_wcwn8")
+autoplay = true
+bus = &"BGM"
 
 [editable path="ExitPoint/ExitPoint"]
 [editable path="ExitPoint/ExitPoint2"]

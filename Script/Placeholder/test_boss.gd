@@ -11,6 +11,8 @@ func _ready():
 	super._ready()
 	camera.lock_at($Marker2D.global_position)	
 	
+	ui.inventory._update_inventory("Sword")
+	ui.inventory._update_inventory("Dash Ring")
 	var viewport_size := get_viewport_rect().size
 	var zoom := camera.zoom
 	var half_size := (viewport_size / zoom) * 0.5
@@ -69,6 +71,8 @@ func spawn_apathy() -> void:
 
 func spawn_cruelty() -> void:
 	var c = cruelty.instantiate()
+	c.dialogue = preload("res://Dialogue/cruelty_cave.dialogue")
+	c.title = "cruelty_defeated"
 	c.position = $EnemySpawn.global_position
 	c.min_x = $Min.global_position.x
 	c.min_y = $Min.global_position.y

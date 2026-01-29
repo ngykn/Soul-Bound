@@ -6,7 +6,7 @@ signal use(Item : String)
 
 func _ready():
 	for i in slot_list.get_children():
-		i.used_item.connect(_update_arrangement)
+		i.used_item.connect(_item_used)
 
 	_update_arrangement()
 
@@ -22,3 +22,7 @@ func _update_arrangement() -> void:
 	
 	for i in GlobalReferences.inventory:
 		_update_inventory(i, true)
+
+func _item_used(item) -> void:
+	_update_arrangement()
+	emit_signal("use", item)

@@ -1,0 +1,39 @@
+Compassion: …I really did hope you’d fall sooner.
+{{GlobalManager.player_name}}: So this is it.
+Hope: {{GlobalManager.player_name}}—! Don’t give up—!
+Compassion: The world doesn’t need saving.
+	It just needs to end.
+
+do narration_one()
+=> END
+~ neutral
+
+Compassion: I broke… even after being saved.
+
+{{GlobalManager.player_name}}: You still chose to betray.
+
+Compassion: And you still chose to forgive.
+	I don’t understand you.
+
+{{GlobalManager.player_name}}: Then live.
+	And learn.
+
+Narration: The world survives.
+	But without Hope, the light remains faint.
+=> END
+~ true_eding
+Compassion: After everything…
+	you still reached out.
+
+Hope: Because that’s what kept us alive.
+
+{{GlobalManager.player_name}}: don’t erase the darkness.
+	We face it—together.
+
+Narration: With determination, compassion, and hope reunited,
+	the world begins to breathe again.
+
+{{GlobalManager.player_name}}: Let’s start again.
+
+Hope: Together.
+=> END

@@ -1,10 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://ca0jsoxwctdo7"]
+[gd_scene load_steps=25 format=3 uid="uid://ca0jsoxwctdo7"]
 
 [ext_resource type="Script" path="res://Script/Sceme/ashfen_cave.gd" id="1_5j5f5"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="2_m50wq"]
 [ext_resource type="Texture2D" uid="uid://deylvo4p2fhpf" path="res://Rocks.png" id="6_5atk2"]
 [ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="8_2kr7y"]
+[ext_resource type="PackedScene" uid="uid://cu4lw10lxdrwh" path="res://Entity/NPC/NPC/normal_npc.tscn" id="8_mmvc5"]
 [ext_resource type="Script" path="res://Script/Object/Camera.gd" id="9_cf726"]
+[ext_resource type="Resource" uid="uid://erwm100xc56d" path="res://ashfencave.dialogue" id="9_ky4y6"]
+[ext_resource type="AudioStream" uid="uid://dcidt2mvyptsm" path="res://Assets/BGM/Goblins_Den_(Regular).wav" id="10_01dt4"]
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="10_fi4e3"]
 [ext_resource type="Script" path="res://Script/Overlap/CaveEntry.gd" id="11_nsstp"]
 
@@ -5443,3 +5446,16 @@ exit_point = "Cave1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitPoint/CaveEntry2"]
 shape = SubResource("RectangleShape2D_p7ia2")
+
+[node name="NPC" type="Node2D" parent="."]
+
+[node name="NormalNpc" parent="NPC" instance=ExtResource("8_mmvc5")]
+position = Vector2(192, 536)
+starting_direction = "up"
+dialogue_id = ExtResource("9_ky4y6")
+dialogue_title = "npc"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_01dt4")
+autoplay = true
+bus = &"BGM"

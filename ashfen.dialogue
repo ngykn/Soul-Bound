@@ -3,23 +3,23 @@ if met_npcs.has("Eldren"):
 	=> met_eldren
 
 Eldren : You fought Apathy.
-Devika : Yes.
+{{GlobalManager.player_name}} : Yes.
 Eldren : Then you already know the cave won’t let you pass.
-Devika : I’ll find a way.
+{{GlobalManager.player_name}} : I’ll find a way.
 Eldren : You won’t.
 Eldren : Not without light.
-Devika : A torch won’t work.
+{{GlobalManager.player_name}} : A torch won’t work.
 Eldren : No.
 Eldren : Ashfen doesn’t fear darkness.
 Eldren : It fears certainty.
 Eldren : I was waiting for someone like you.
 
 Eldren : This is Emberlight.
-Devika : It’s… warm.
+{{GlobalManager.player_name}} : It’s… warm.
 Eldren : It won’t show you paths.
 Eldren : It won’t protect you.
 Eldren : It only proves you’re still moving forward.
-Devika : And the cave?
+{{GlobalManager.player_name}} : And the cave?
 Eldren : If it shines…
 Eldren : Ashfen will let you go where you’re meant to be.
 Item Acquired : [speed=1]Emberlight acquired

@@ -10,7 +10,6 @@ var entry_points := {}
 func _ready():
 	camera.follow(player)
 	player.dead.connect(_player_dead)
-	print(player)
 	if entry_point:
 		for p in entry_point.get_children():
 			entry_points[p.name] = p
@@ -29,7 +28,6 @@ func match_entry_point(entry_point_id: String) -> void:
 	player.face_cardinal_direction(spawn.face_on_spawn)
 
 func _player_dead() -> void:
-	print("No More Player")
 	await get_tree().create_timer(0.5).timeout
 	GlobalManager.player_life = 100
 	TransitionManager.go_to_chunk(self, "res://Scene/middlehaven.tscn", "South")

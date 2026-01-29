@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7hxqmsg2d3by"]
+[gd_scene load_steps=10 format=3 uid="uid://7hxqmsg2d3by"]
 
 [ext_resource type="Script" path="res://Script/Sceme/test_enemy_scene.gd" id="1_ok4ph"]
 [ext_resource type="PackedScene" uid="uid://drlfriyhb4cre" path="res://Entity/Player/player.tscn" id="2_f8wh8"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="4_xxgej"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="5_xuohd"]
 [ext_resource type="PackedScene" uid="uid://cfpp0lwt61vtj" path="res://Environment/House/house_3.tscn" id="6_bxpkv"]
+[ext_resource type="PackedScene" uid="uid://cv0meg87b44st" path="res://Object/Dummy.tscn" id="7_3tq5j"]
+[ext_resource type="PackedScene" uid="uid://b2dx256e7n5or" path="res://Entity/Enemy/compassion.tscn" id="8_8qd8w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pcr6c"]
 radius = 56.0
@@ -32,5 +34,11 @@ shape = SubResource("CircleShape2D_pcr6c")
 
 [node name="House3" parent="." instance=ExtResource("6_bxpkv")]
 position = Vector2(200, 144)
+
+[node name="Dummy" parent="." instance=ExtResource("7_3tq5j")]
+position = Vector2(-48, 80)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("8_8qd8w")]
+position = Vector2(-280, 214)
 
 [editable path="ExitPoint"]

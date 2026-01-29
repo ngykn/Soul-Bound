@@ -1,0 +1,58 @@
+~ pre_fight_despair
+Despair: You came anyway.
+{{GlobalManager.player_name}}: Let her go.
+Despair: She’s already slipping.
+	I’m just… watching.
+Hope: {{GlobalManager.player_name}}… I’m tired…
+{{GlobalManager.player_name}} : Hold on.
+Despair: That’s the problem.
+	You always tell them to hold on.
+{{GlobalManager.player_name}} : Why her?
+Despair: Because she shines the brightest.
+	And bright things break first.
+Hope: I didn’t mean to hurt anyone…
+Despair: You didn’t.
+	You just made them believe.
+{{GlobalManager.player_name}} : Belief isn’t a crime.
+Despair: It is when it fails.
+Despair: I was born the moment someone said,
+	Maybe next time.
+{{GlobalManager.player_name}} : Then this time is different.
+Despair: Every time says that.
+=> END
+
+~ despair_vulnerable
+Despair: Do it.
+Despair: End me…
+	and end the waiting.
+
+Hope: {{GlobalManager.player_name}} … I don’t want to disappear…
+
+=> END
+
+~ killed_despair
+Despair: So this is how it ends…
+Despair: Quiet.[wait=0.5]
+	Final.[wait=0.5]
+	Empty.
+=> END
+ 
+~ Hope
+Hope: {{GlobalManager.player_name}} … I can’t feel myself anymore…
+{{GlobalManager.player_name}} : No—!
+=> END
+
+~ spared_despair
+{{GlobalManager.player_name}} : I won’t kill you.
+Despair: …Why?
+{{GlobalManager.player_name}} : Because you’re not the cause.
+	You’re the result.
+Despair: You think that changes anything?
+{{GlobalManager.player_name}} : It changes me.
+Hope: I’m… still here?
+Despair: You chose to carry this world’s pain…
+	instead of ending it.
+Despair: Perhaps that’s what hope really is.
+Hope: {{GlobalManager.player_name}}...
+	I won’t leave again.
+=> END

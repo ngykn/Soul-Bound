@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3sb5ibktehhe"]
+[gd_scene load_steps=14 format=3 uid="uid://3sb5ibktehhe"]
 
 [ext_resource type="Script" path="res://Script/transition.gd" id="1_tvypj"]
 [ext_resource type="Shader" path="res://slide_transition.gdshader" id="2_3f6w0"]
@@ -253,6 +253,60 @@ _data = {
 "slideY_out": SubResource("Animation_yojxj")
 }
 
+[sub_resource type="Animation" id="Animation_vttol"]
+resource_name = "text_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vwa5w"]
+resource_name = "text_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1b4s5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2g7mq"]
+_data = {
+"RESET": SubResource("Animation_1b4s5"),
+"text_in": SubResource("Animation_vttol"),
+"text_out": SubResource("Animation_vwa5w")
+}
+
 [node name="Transition" type="CanvasLayer"]
 layer = 128
 script = ExtResource("1_tvypj")
@@ -271,4 +325,25 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_becjo")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(855, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.5
+offset_right = 427.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+
+[node name="TextAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2g7mq")
 }

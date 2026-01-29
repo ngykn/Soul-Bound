@@ -5,15 +5,11 @@ signal animation_in_finished
 signal animation_out_finished
 
 @onready var animation_player = $AnimationPlayer
-
-var from : String
-var last_scene_name : String
-var path_dir := "res://Scene/"
+@onready var text_label = $RichTextLabel
+@onready var text_animation = $TextAnimation
 
 
 func change_scene(from, to_next_scene : String) -> void:
-	last_scene_name = from.name
-	
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
 	
@@ -105,3 +101,37 @@ func slide_out() -> void:
 	animation_player.play("slideY_out")
 	await animation_player.animation_finished
 	emit_signal("animation_in_finished")
+
+# =========================
+# TEXT ANIMATION
+# =========================
+func text_animation_fade(text : Array[String], delay : float = 1.0) -> void:
+	await fade_in()
+	text_label.visible_ratio = 1
+	for i in text:
+		text_label.text = "[center]" + i +"[/center]"
+		text_animation.play("text_in")
+		await text_animation.animation_finished
+		await get_tree().create_timer(delay).timeout
+		text_animation.play("text_out")
+		await text_animation.animation_finished
+	
+	text_label.visible_ratio = 0
+	await fade_out()
+
+func text_animation_ratio(text : Array[String], delay : float = 1.0) -> void:
+	await fade_in()
+	text_label.modulate.a = 1
+	text_label.visible_ratio = 0
+	for i in text:
+		text_label.text = "[center]" + i +"[/center]"
+		await tween_ratio(1)
+		await get_tree().create_timer(delay).timeout
+		await tween_ratio(0)
+	text_label.modulate.a = 0
+	await fade_out()
+
+func tween_ratio(value) -> void:
+	var t = create_tween()
+	t.tween_property(text_label, "visible_ratio", value, 0.5)
+	await t.finished

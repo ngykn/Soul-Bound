@@ -1,0 +1,43 @@
+~ cruelty_pre_fight
+Cruelty : Still breathing.
+Cruelty : That’s impressive.
+Compassion : You don’t have to do this.
+Cruelty : I already did.
+Cruelty : A long time ago.
+Cruelty : Mercy is a habit you pick up when you can afford it.
+Cruelty : I never could.
+Cruelty : ...
+do cruelty.sprite.flip_h = true
+Cruelty : We have company.
+Cruelty : Another hero?
+Cruelty : Or just another body looking for meaning.
+{{GlobalManager.player_name}} : Let her go.
+Cruelty : You don’t get to ask that.
+Cruelty : Not here.
+Cruelty : If you want compassion...
+Cruelty : You’ll have to bleed for it.
+=> END
+
+~ cruelty_defeated
+Cruelty : So... this is how it ends.
+Cruelty : I thought keeping you locked away
+Cruelty : would keep the world honest.
+Cruelty : Turns out I was just afraid
+Cruelty : you’d prove me wrong.
+Cruelty : ...
+=> END
+
+~ compassion_rescued
+Compassion : He was never empty.
+Compassion : Just wounded beyond his own understanding.
+Compassion : Thank you.
+Compassion : For choosing restraint
+Compassion : where he chose force.
+=> END
+
+~ player_defeated
+Cruelty : See?
+Cruelty : The world doesn’t reward kindness.
+Cruelty : Hope keeps walking into this cave.
+Cruelty : And I keep burying it.
+=> END
