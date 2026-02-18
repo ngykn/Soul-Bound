@@ -53,9 +53,6 @@ func _on_apathy_vulnerable():
 	ui.main_objectives.completed_objective("Defeat Apathy")
 	$ExitPoint/ExitPoint.set_collision_disabled(false)
 
-func _on_button_pressed():
-	$Window.visible = not $Window.visible
-
 func _player_dead() -> void:
 	GlobalManager.player_life = 100
 	get_tree().reload_current_scene()

@@ -3424,7 +3424,6 @@ shape = SubResource("RectangleShape2D_lupw6")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_lxx0w")
 autoplay = true
-bus = &"BGM"
 
 [editable path="ExitPoint2/ExitPoint"]
 [editable path="ExitPoint2/ExitPoint2"]

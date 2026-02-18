@@ -15,7 +15,6 @@ func _on_area_cut_scene_player_entered():
 	camera.lock_at($ApathyRoom.global_position)
 	$Apathy2.dramatic_attack()
 
-
 func _on_apathy_2_vulnerable():
 	$AudioStreamPlayer2.stop()
 	GameState.input_enabled = false
@@ -23,4 +22,3 @@ func _on_apathy_2_vulnerable():
 	await camera.finished_pan
 	camera.follow(player)
 	GameState.input_enabled = true
-	

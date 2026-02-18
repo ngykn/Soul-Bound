@@ -12,7 +12,7 @@ func _ready():
 	get_tree().set_auto_accept_quit(false)
 	confirmation_dialog.canceled.connect(cancel_confirmation_dialog)
 	confirmation_dialog.confirmed.connect(quit_game)
-
+	
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		show_confimation_dialog()

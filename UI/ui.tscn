@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btidq6wnbga24"]
+[gd_scene load_steps=20 format=3 uid="uid://btidq6wnbga24"]
 
 [ext_resource type="Texture2D" uid="uid://bqx8ul1tiw6vq" path="res://Assets/UI/ValueBar_128x16.png" id="1_3abu3"]
 [ext_resource type="Script" path="res://Script/UI/ui.gd" id="1_m3066"]
@@ -13,6 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://fw45c8nsi145" path="res://Assets/UI/lineLight11.png" id="7_y3ayx"]
 [ext_resource type="Texture2D" uid="uid://c3d64548pqciy" path="res://Assets/UI/lineLight13.png" id="8_aua1t"]
 [ext_resource type="Texture2D" uid="uid://iykqtfqlj4bp" path="res://Assets/UI/lineLight17.png" id="8_dgiis"]
+[ext_resource type="Texture2D" uid="uid://bpom0s4la05j2" path="res://Assets/UI/flatDark20.png" id="12_oavxn"]
+[ext_resource type="Texture2D" uid="uid://bafgo4lv0y33i" path="res://Assets/UI/flatDark11.png" id="13_avhci"]
+[ext_resource type="Texture2D" uid="uid://7ci06g5xtrc" path="res://Assets/UI/flatDark15.png" id="14_xly3b"]
+[ext_resource type="Texture2D" uid="uid://u8gmhqe5pgbe" path="res://Assets/UI/flatDark13.png" id="15_o8e82"]
+[ext_resource type="Script" path="res://Script/UI/minimap.gd" id="16_sehm0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q61y"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="UI" type="Control" groups=["ui"]]
 process_mode = 3
@@ -99,10 +111,11 @@ layout_mode = 2
 
 [node name="Pause" type="Panel" parent="CanvasLayer/MarginContainer"]
 visible = false
-custom_minimum_size = Vector2(400, 200)
+custom_minimum_size = Vector2(400, 250)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_3q61y")
 script = ExtResource("7_p7gk2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Pause"]
@@ -126,19 +139,73 @@ text = "PAUSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Music" type="CheckBox" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer"]
+[node name="Music" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="CheckBox" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer/Music"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_icons/checked = ExtResource("7_y3ayx")
 theme_override_icons/unchecked = ExtResource("8_aua1t")
-text = "Music"
+button_pressed = true
 
-[node name="SFX" type="CheckBox" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer/Music"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+
+[node name="SFX" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="CheckBox" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer/SFX"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_icons/checked = ExtResource("7_8thtw")
 theme_override_icons/unchecked = ExtResource("8_dgiis")
-text = "Sound Effects"
+button_pressed = true
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+
+[node name="Home" type="TextureButton" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("12_oavxn")
+texture_pressed = ExtResource("13_avhci")
+flip_h = true
+
+[node name="Pause" type="TextureButton" parent="CanvasLayer/MarginContainer/Pause/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("14_xly3b")
+texture_pressed = ExtResource("15_o8e82")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MarginContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(150, 150)
+render_target_update_mode = 4
+script = ExtResource("16_sehm0")
+
+[node name="Camera" type="Camera2D" parent="CanvasLayer/MarginContainer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.3, 0.3)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_e3wvx")]
 visible = false
@@ -152,9 +219,20 @@ ok_button_text = "Yes"
 dialog_text = "Are you sure you want to quit?"
 cancel_button_text = "No"
 
+[node name="ConfirmationDialog2" type="ConfirmationDialog" parent="CanvasLayer"]
+initial_position = 2
+size = Vector2i(252, 100)
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to quit?"
+cancel_button_text = "No"
+
 [node name="ObjectiveSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_6s15y")
 bus = &"SFX"
 
-[connection signal="toggled" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/Music" to="CanvasLayer/MarginContainer/Pause" method="_on_bgm_toggled"]
-[connection signal="toggled" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/SFX" to="CanvasLayer/MarginContainer/Pause" method="_on_sfx_toggled"]
+[connection signal="toggled" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/Music/Music" to="CanvasLayer/MarginContainer/Pause" method="_on_bgm_toggled"]
+[connection signal="drag_ended" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/Music/MusicSlider" to="CanvasLayer/MarginContainer/Pause" method="_on_music_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/Music/MusicSlider" to="CanvasLayer/MarginContainer/Pause" method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/SFX/SFX" to="CanvasLayer/MarginContainer/Pause" method="_on_sfx_toggled"]
+[connection signal="drag_ended" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/SFX/SFXSlider" to="CanvasLayer/MarginContainer/Pause" method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/MarginContainer/Pause/VBoxContainer/SFX/SFXSlider" to="CanvasLayer/MarginContainer/Pause" method="_on_sfx_slider_value_changed"]
