@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://du4wro3yq23nk"
+path="res://.godot/imported/barrenland.dialogue-9e98a95cedd44da5481a8aed0e1c281c.tres"
+
+[deps]
+
+source_file="res://Dialogue/barrenland.dialogue"
+dest_files=["res://.godot/imported/barrenland.dialogue-9e98a95cedd44da5481a8aed0e1c281c.tres"]
+
+[params]
+
+defaults=true

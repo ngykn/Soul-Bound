@@ -249,7 +249,12 @@ func _on_hurtbox_hurt(entity):
 
 	_is_hurt = true
 
-	life -= 1
+	var damageP := 1
+
+	if GlobalManager.strength:
+		damageP = 3
+
+	life -= damageP
 
 	hurt_animation.play("hurt")
 	await hurt_animation.animation_finished

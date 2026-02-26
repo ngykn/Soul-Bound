@@ -1,5 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://drlfriyhb4cre"]
+[gd_scene load_steps=55 format=3 uid="uid://drlfriyhb4cre"]
 
+[ext_resource type="Shader" path="res://Shader/cold.gdshader" id="1_0sl5x"]
 [ext_resource type="Script" path="res://Script/Player/player.gd" id="1_n3tpv"]
 [ext_resource type="Script" path="res://Script/Player/AnimationPlayer.gd" id="2_4uvwk"]
 [ext_resource type="Shader" uid="uid://4g7jpwc60bou" path="res://Shader/ShaderMaterial.tres" id="2_ipkpm"]
@@ -24,6 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://dlioqk64ohb34" path="res://Assets/Entities/Player/Walk_Up.png" id="19_h5bxq"]
 [ext_resource type="AudioStream" uid="uid://bux55wyryp8iw" path="res://Assets/BGM/sword-sound-2-36274.mp3" id="22_vmloh"]
 [ext_resource type="AudioStream" uid="uid://5harr0jopago" path="res://Assets/BGM/female-hurt-2-94301.mp3" id="23_pgtqr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhcf1"]
+shader = ExtResource("1_0sl5x")
+shader_parameter/enabled = false
+shader_parameter/cold_strength = 1.0
+shader_parameter/desaturate_strength = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jiopn"]
 shader = ExtResource("2_ipkpm")
@@ -1220,6 +1227,7 @@ height = 32.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_vhcf1")
 collision_layer = 2
 collision_mask = 21
 script = ExtResource("1_n3tpv")
@@ -1231,6 +1239,7 @@ texture = ExtResource("11_gyh2s")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_k4dbc")
 
@@ -1261,6 +1270,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 y_sort_enabled = true
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_hq5gu")
@@ -1272,6 +1282,7 @@ collision_mask = 12
 enemy_groups = Array[String](["enemy_bullet", "blade"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("CapsuleShape2D_ex2a1")
 
 [node name="Hitbox" parent="." groups=["blade"] instance=ExtResource("18_ripo8")]
@@ -1279,6 +1290,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_uuvk5")
 disabled = true
 

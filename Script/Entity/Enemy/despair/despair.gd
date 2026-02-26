@@ -173,7 +173,12 @@ func _on_hurtbox_hurt(entity):
 	
 	hurt_animation.play("hurt")
 	
-	life -= 1
+	var damageP := 1
+	
+	if GlobalManager.strength:
+		damageP = 3
+
+	life -= damageP
 	if life <= 0:
 		$Arm.hide()
 		if _is_vulnerable:

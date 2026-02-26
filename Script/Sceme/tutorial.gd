@@ -36,8 +36,8 @@ func _ready():
 	#Inventory & Attack
 	dummy.hit.connect(_attack_tutorial)
 	ui.inventory.use.connect(_inventory_tutorial)
-	
-	
+
+
 	GameState.input_enabled = false
 	#await TransitionManager.scene_transition_finished
 	camera.lock_at(player.global_position)

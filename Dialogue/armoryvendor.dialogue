@@ -1,0 +1,37 @@
+~ armory_vendor
+Vendor: Steel doesn’t lie.
+Vendor: If you’re still breathing, you’ll want better gear.
+Vendor: Choose a Response...
+
+- Armor Price = 120
+	if GameState.coin >= 120:
+		Vendor: Good. Armor first. Smart.
+		Vendor: This plate will take the hit so you don’t have to.
+		Vendor: Don’t expect it to make you invincible. Just harder to kill.
+		do GlobalManager.armor = 50
+		do GameState.coin -= 120
+	else:
+		Vendor: Come back when your purse is heavier.
+
+- Shield Price = 90
+	if GameState.coin >= 90:
+		Vendor: A shield saves more lives than a sword.
+		Vendor: Hold it steady. Time your guard.
+		Vendor: Block right, and you control the fight.
+		do GlobalManager.shield = 5
+		do GameState.coin -= 90
+	else:
+		Vendor: Protection costs coin. You’re short.
+
+- Boots Price = 70
+	if GameState.coin >= 70:
+		Vendor: Speed keeps you alive.
+		Vendor: These boots are light, but durable.
+		Vendor: Move fast. Don’t let death catch up.
+		do ui.inventory._update_inventory("Boots")
+		do GameState.coin -= 70
+	else:
+		Vendor: You can’t outrun danger without paying for it.
+
+- Maybe Later
+	=> END

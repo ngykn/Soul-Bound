@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://btidq6wnbga24"]
+[gd_scene load_steps=31 format=3 uid="uid://btidq6wnbga24"]
 
 [ext_resource type="Texture2D" uid="uid://bqx8ul1tiw6vq" path="res://Assets/UI/ValueBar_128x16.png" id="1_3abu3"]
 [ext_resource type="Script" path="res://Script/UI/ui.gd" id="1_m3066"]
+[ext_resource type="Texture2D" uid="uid://dwre4b8wajw3v" path="res://Assets/UI/HealthBarPanel_160x41.png" id="2_7nogw"]
 [ext_resource type="Texture2D" uid="uid://vcaiaddawyx3" path="res://Assets/UI/ValueRed_120x8.png" id="2_uduk3"]
 [ext_resource type="Texture2D" uid="uid://cfj0tsx0435bq" path="res://Assets/UI/BlackBigCircleBoxWithBorder_27x27.png" id="4_8cj8g"]
 [ext_resource type="Texture2D" uid="uid://b3icv3jy3eh46" path="res://Assets/UI/HeartIcons_32x32.png" id="5_d77a6"]
@@ -9,15 +10,31 @@
 [ext_resource type="Script" path="res://Script/System/MainObjectiveSystem.gd" id="6_tdqkr"]
 [ext_resource type="AudioStream" uid="uid://pv7s2n7nixe5" path="res://Assets/BGM/SFX/game-level-complete-143022.wav" id="7_6s15y"]
 [ext_resource type="Texture2D" uid="uid://3mem0q7xrpw" path="res://Assets/UI/lineLight15.png" id="7_8thtw"]
+[ext_resource type="Texture2D" uid="uid://diyfq20sd76na" path="res://Assets/UI/ValueBlue_120x8.png" id="7_b8ucp"]
 [ext_resource type="Script" path="res://Script/UI/Pause.gd" id="7_p7gk2"]
 [ext_resource type="Texture2D" uid="uid://fw45c8nsi145" path="res://Assets/UI/lineLight11.png" id="7_y3ayx"]
 [ext_resource type="Texture2D" uid="uid://c3d64548pqciy" path="res://Assets/UI/lineLight13.png" id="8_aua1t"]
+[ext_resource type="Texture2D" uid="uid://dgjgbacn57e80" path="res://Assets/UI/CornerKnot_14x14.png" id="8_ayw67"]
 [ext_resource type="Texture2D" uid="uid://iykqtfqlj4bp" path="res://Assets/UI/lineLight17.png" id="8_dgiis"]
+[ext_resource type="Texture2D" uid="uid://4rd5wmt2raou" path="res://Assets/UI/CoinIcon(WithoutStroke)_16x18.png" id="9_fkgsu"]
+[ext_resource type="Texture2D" uid="uid://djw1vqrjw1xqg" path="res://Assets/UI/Shield_16x18.png" id="10_uu8h4"]
+[ext_resource type="Texture2D" uid="uid://dmxklw4qtrcwa" path="res://Assets/UI/Armor_20x18.png" id="11_rpkio"]
+[ext_resource type="Texture2D" uid="uid://dqg52ggp7j33x" path="res://Assets/UI/Boots_20x18.png" id="12_bpe4j"]
 [ext_resource type="Texture2D" uid="uid://bpom0s4la05j2" path="res://Assets/UI/flatDark20.png" id="12_oavxn"]
 [ext_resource type="Texture2D" uid="uid://bafgo4lv0y33i" path="res://Assets/UI/flatDark11.png" id="13_avhci"]
+[ext_resource type="Texture2D" uid="uid://c2jxofjfmmwa4" path="res://Assets/UI/Strength_16x18.png" id="13_f0y1q"]
 [ext_resource type="Texture2D" uid="uid://7ci06g5xtrc" path="res://Assets/UI/flatDark15.png" id="14_xly3b"]
 [ext_resource type="Texture2D" uid="uid://u8gmhqe5pgbe" path="res://Assets/UI/flatDark13.png" id="15_o8e82"]
 [ext_resource type="Script" path="res://Script/UI/minimap.gd" id="16_sehm0"]
+[ext_resource type="Texture2D" uid="uid://c78jlnn25r64u" path="res://Assets/Minimap/Tutorial.png" id="17_l212d"]
+[ext_resource type="Texture2D" uid="uid://cpaj1uimbbemp" path="res://Assets/UI/Navigator.png" id="17_vcyto"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3aw53"]
+texture = ExtResource("2_7nogw")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q61y"]
 bg_color = Color(0.184314, 0.184314, 0.184314, 1)
@@ -52,20 +69,67 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="Health" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 82)
 layout_mode = 2
 size_flags_vertical = 0
 metadata/_edit_group_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/Health"]
-custom_minimum_size = Vector2(128, 18)
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/VBoxContainer/Health"]
+visible = false
+layout_mode = 1
+offset_right = 275.0
+offset_bottom = 75.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3aw53")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer"]
 layout_mode = 2
-offset_left = 59.0
-offset_top = 19.0
-offset_right = 188.0
-offset_bottom = 47.0
+theme_override_constants/separation = -4
+
+[node name="Container" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Circle" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer/Container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("4_8cj8g")
+metadata/_edit_group_ = true
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer/Container"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 13.0
+offset_right = 52.0
+offset_bottom = 53.0
+texture = ExtResource("5_d77a6")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
 value = 50.0
 nine_patch_stretch = true
 stretch_margin_left = 4
@@ -75,22 +139,203 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("1_3abu3")
 texture_progress = ExtResource("2_uduk3")
 
-[node name="Circle" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health"]
-custom_minimum_size = Vector2(64, 64)
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 15)
 layout_mode = 2
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("4_8cj8g")
-metadata/_edit_group_ = true
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("1_3abu3")
+texture_over = ExtResource("7_b8ucp")
 
-[node name="Heart" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health"]
+[node name="Knot" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel"]
+z_index = 1
 layout_mode = 0
-offset_left = 12.0
-offset_top = 13.0
-offset_right = 52.0
-offset_bottom = 53.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("8_ayw67")
+
+[node name="Knot2" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -15.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+texture = ExtResource("8_ayw67")
+
+[node name="Knot3" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 5.0
+grow_vertical = 0
+texture = ExtResource("8_ayw67")
+
+[node name="Knot4" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_ayw67")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/MarginContainer/VBoxContainer/Health"]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 41.0
+scale = Vector2(2, 2)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -20.5
+offset_right = 5.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer"]
+z_index = 1
+layout_mode = 2
+texture = ExtResource("4_8cj8g")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_d77a6")
-metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Health" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 16)
+layout_mode = 2
+step = 0.01
+value = 100.0
+texture_under = ExtResource("1_3abu3")
+texture_progress = ExtResource("2_uduk3")
+
+[node name="Armor" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+max_value = 50.0
+step = 0.01
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("1_3abu3")
+texture_progress = ExtResource("7_b8ucp")
+
+[node name="Items" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Coin" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Items"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Coin"]
+custom_minimum_size = Vector2(24, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("9_fkgsu")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Coin"]
+layout_mode = 2
+text = "0"
+
+[node name="Shield" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Items"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Shield"]
+custom_minimum_size = Vector2(24, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_uu8h4")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Shield"]
+layout_mode = 2
+text = "0"
+
+[node name="Armor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Items"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Armor"]
+custom_minimum_size = Vector2(24, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("11_rpkio")
+
+[node name="Boot" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Items"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Boot"]
+custom_minimum_size = Vector2(30, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_bpe4j")
+
+[node name="Strength" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Items"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Items/Strength"]
+custom_minimum_size = Vector2(30, 27)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("13_f0y1q")
 
 [node name="MainObjectives" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -105,9 +350,6 @@ text = "Main Objectives"
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="Pause" type="Panel" parent="CanvasLayer/MarginContainer"]
 visible = false
@@ -192,20 +434,64 @@ layout_mode = 2
 texture_normal = ExtResource("14_xly3b")
 texture_pressed = ExtResource("15_o8e82")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/MarginContainer"]
+[node name="Minimap" type="Control" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Minimap"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_bottom = 150.0
+grow_horizontal = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/MarginContainer/Minimap/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -72.5
+offset_right = 72.5
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MarginContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MarginContainer/Minimap/Panel/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(150, 150)
+size = Vector2i(145, 145)
 render_target_update_mode = 4
 script = ExtResource("16_sehm0")
 
-[node name="Camera" type="Camera2D" parent="CanvasLayer/MarginContainer/SubViewportContainer/SubViewport"]
-zoom = Vector2(0.3, 0.3)
+[node name="MapTexture" type="TextureRect" parent="CanvasLayer/MarginContainer/Minimap/Panel/SubViewportContainer/SubViewport"]
+offset_right = 2304.0
+offset_bottom = 1312.0
+texture = ExtResource("17_l212d")
+
+[node name="Navigator" type="Sprite2D" parent="CanvasLayer/MarginContainer/Minimap/Panel/SubViewportContainer/SubViewport"]
+texture = ExtResource("17_vcyto")
+
+[node name="Camera" type="Camera2D" parent="CanvasLayer/MarginContainer/Minimap/Panel/SubViewportContainer/SubViewport"]
+
+[node name="Navigator" type="TextureRect" parent="CanvasLayer/MarginContainer/Minimap"]
+visible = false
+layout_mode = 2
+offset_left = 68.0
+offset_top = 67.0
+offset_right = 83.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5.5, 7.5)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("17_vcyto")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_e3wvx")]
 visible = false

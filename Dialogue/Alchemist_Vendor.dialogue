@@ -1,0 +1,27 @@
+~ alchemist_vendor
+Vendor: Ah… the scent of dust and battle follows you.
+Vendor: Potions mend what steel cannot.
+Vendor: Choose a Response...
+
+- Health Potion Price = 30
+	if GameState.coin >= 30:
+		Vendor: A wise investment.
+		Vendor: This brew restores lost vitality and steadies the heart.
+		Vendor: Drink it when your vision starts to fade.
+		do ui.inventory._update_inventory("Health")
+		do GameState.coin -= 30
+	else:
+		Vendor: Even miracles require coin, I’m afraid.
+
+- Strength Potion Price = 70
+	if GameState.coin >= 70:
+		Vendor: Ah… power in liquid form.
+		Vendor: This mixture sharpens your muscles and fuels your resolve.
+		Vendor: For a short time, your strikes will land with greater force.
+		do ui.inventory._update_inventory("Strength")
+		do GameState.coin -= 70
+	else:
+		Vendor: You lack the coin for such potency.
+
+- Maybe Later
+	=> END

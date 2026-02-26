@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bfqrlwas7cmiq"]
+[gd_scene load_steps=30 format=3 uid="uid://bfqrlwas7cmiq"]
 
 [ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_3f8v6"]
 [ext_resource type="Script" path="res://Script/Sceme/ashenway.gd" id="1_svwap"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Script/Object/Camera.gd" id="10_is3nt"]
 [ext_resource type="PackedScene" uid="uid://betw6tyuc6ymp" path="res://Screen Overlay Effects/fog_effect.tscn" id="14_bau48"]
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="14_jkex1"]
+[ext_resource type="PackedScene" uid="uid://bw3o41ok1rphs" path="res://Archer.tscn" id="15_6ux5j"]
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="15_aokui"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fs43"]
@@ -3005,6 +3006,11 @@ autoplay = true
 bus = &"BGM"
 
 [node name="Fog" parent="." instance=ExtResource("14_bau48")]
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="enemy" parent="Enemy" instance=ExtResource("15_6ux5j")]
+position = Vector2(384, 1920)
 
 [editable path="House/House3"]
 [editable path="ExitPoint/ExitPoint"]

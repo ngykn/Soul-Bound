@@ -6,6 +6,8 @@ class_name EnemyBullet extends CharacterBody2D
 @export var reveal_distance := 120.0
 @export var full_visible_distance := 50.0
 
+@onready var collision = $CollisionShape2D
+@onready var hitbox_collision = $Hitbox/CollisionShape2D
 @onready var player : Player
 
 
@@ -26,7 +28,7 @@ func _ready() -> void:
 	velocity = direction.normalized() * speed
 	
 	if variation == Variation.EMPTY_ORBIT:
-		$CollisionShape2D.set_deferred("disabled",true)
+		collision.set_deferred("disabled",true)
 		$Hitbox/CollisionShape2D.set_deferred("disabled",true)
 		await get_tree().process_frame
 		$Hitbox/CollisionShape2D.set_deferred("disabled",false)
@@ -37,8 +39,6 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	match variation:
-		Variation.NORMAL_BULLET:
-			pass
 		Variation.HOLLOW_BULLET:
 			_hollow_echo(delta)
 		Variation.EMPTY_ORBIT:

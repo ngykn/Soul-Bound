@@ -2,8 +2,10 @@ class_name Player extends CharacterBody2D
 
 signal cutscene_movement_finished
 signal dead
-@export_category("Health")
+
+@export_category("Health & Armor")
 @export var health := GlobalManager.player_life
+@export var armor := GlobalManager.armor ##min 0 | max 70
 
 @export_category("Face Direction")
 @export_enum("north","east","south","west")
@@ -24,6 +26,7 @@ var can_interact := false
 var current_npc : NPC = null
 var move_mode : MoveMode = MoveMode.PLAYER
 
+const BOOTS_SPEED := 200
 const WALK_SPEED := 100
 const SLOW_SPEED := 50
 const CUTSCENE_SPEED := 80
@@ -39,9 +42,13 @@ var move_input := Vector2.ZERO
 var cutscene_target := Vector2.ZERO
 var cutscene_finished := false
 
+var is_shield_active : bool = false
+
+var is_boots_active : bool = false
+
 const DASH_SPEED := 350
 const DASH_DURATION := 0.15
-const DASH_COOLDOWN := 0.6
+const DASH_COOLDOWN := 5.0
 
 var is_dashing := false
 var dash_time := 0.0
@@ -61,6 +68,13 @@ func _unhandled_key_input(event) -> void:
 	if is_dead:
 		return
 
+	if event.is_action_pressed("shield") and GlobalManager.shield > 0:
+		is_shield_active = true
+		material.set_shader_parameter("enabled", true)
+
+	elif event.is_action_released("shield"):
+		is_shield_active = false
+		material.set_shader_parameter("enabled", false)
 
 	if !move_mode == MoveMode.PLAYER and !GameState.input_enabled:
 		return
@@ -75,6 +89,8 @@ func _unhandled_key_input(event) -> void:
 func _physics_process(delta) -> void:
 	if is_dead:
 		return
+
+	is_boots_active = (GlobalManager.boots)
 
 	if dash_cooldown > 0:
 		dash_cooldown -= delta
@@ -147,6 +163,8 @@ func _handle_player_movement() -> void:
 	var speed := WALK_SPEED
 	if Input.is_action_pressed("slow_movement"):
 		speed = SLOW_SPEED
+	elif is_boots_active:
+		speed = BOOTS_SPEED
 
 	move_input = input_dir.normalized() * speed
 
@@ -232,11 +250,24 @@ func _handle_hit(instance : Node2D) -> void:
 	if !camera or is_hurt or is_dead:
 		return
 
+	if is_shield_active:
+		GlobalManager.shield -= 1
+		is_shield_active = false
+		material.set_shader_parameter("enabled", false)
+		return
+
 	is_hurt = true
 	camera.shake()
 	
-	health -= randf_range(10.0,20.0)
-	GlobalManager.player_life = health
+	if armor > 0:
+		health -= randf_range(5.0,10.0)
+		armor -= randf_range(5.0,20.0)
+		GlobalManager.player_life = health
+		GlobalManager.armor = armor
+	else:
+		health -= randf_range(10.0,20.0)
+		GlobalManager.player_life = health
+		GlobalManager.armor = armor
 
 	await animation_manager.hurt()
 	

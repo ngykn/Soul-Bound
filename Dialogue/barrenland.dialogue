@@ -1,0 +1,65 @@
+~ barrenland
+if met_npcs.has("Rovan"):
+	=> met_rovan
+Rovan Ashfall: …You shouldn’t be here alone.
+Rovan Ashfall: The Barrenland doesn’t forgive mistakes.
+
+{{GlobalManager.player_name}}: I didn’t come this far to turn back.
+{{GlobalManager.player_name}}: Tell me what I’m walking into.
+
+Rovan Ashfall: Good. Then listen.
+Rovan Ashfall: The bones scattered across this land?
+Rovan Ashfall: They rise.
+
+Rovan Ashfall: Skeleton Archers take the high ground.
+Rovan Ashfall: They won’t chase you.
+Rovan Ashfall: They’ll wait… and pierce you from a distance.
+Rovan Ashfall: Never run in a straight line.
+
+{{GlobalManager.player_name}}: So I keep moving.
+{{GlobalManager.player_name}}: Make them miss.
+
+Rovan Ashfall: Exactly.
+Rovan Ashfall: The Skeleton Warriors are slower.
+Rovan Ashfall: Rusted blades. Heavy swings.
+Rovan Ashfall: They punish hesitation.
+
+{{GlobalManager.player_name}}: Then I won’t hesitate.
+
+Rovan Ashfall: Confidence is useful.
+Rovan Ashfall: Overconfidence gets you buried.
+
+{{GlobalManager.player_name}}: …I’ll remember that.
+
+Rovan Ashfall: You’ll need more than courage.
+Rovan Ashfall: Take these.
+
+Rovan Ashfall: A Strength Elixir.
+Rovan Ashfall: It will make your strikes hit harder.
+do ui.inventory._update_inventory("Strength")
+
+{{GlobalManager.player_name}}: I can feel it… my arms feel lighter.
+
+Rovan Ashfall: Worn Traveler’s Boots.
+Rovan Ashfall: Move faster. Don’t let arrows find you.
+do ui.inventory._update_inventory("Boots")
+
+{{GlobalManager.player_name}}: These will help me close the gap.
+
+Rovan Ashfall: And Ironbound Armor.
+Rovan Ashfall: It won’t make you invincible.
+Rovan Ashfall: But it may give you one more mistake.
+do GlobalManager.armor = 50
+
+{{GlobalManager.player_name}}: One mistake is all I need.
+
+Rovan Ashfall: Survive the Barrenland.
+Rovan Ashfall: Then we’ll see if your determination is real.
+
+{{GlobalManager.player_name}}: It is.
+{{GlobalManager.player_name}}: And I’m not letting this land stop me.
+do met_npcs.append("Rovan")
+=> END
+
+~ met_rovan
+Rovan Ashfall: Be careful...

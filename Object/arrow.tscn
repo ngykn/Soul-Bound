@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://kc65empc52ie"]
+
+[ext_resource type="Texture2D" uid="uid://cn5m2y5m4c6dt" path="res://Assets/Entities/Skelee/Arrow.png" id="1_bsbgw"]
+[ext_resource type="Script" path="res://Object/arrow.gd" id="1_p3iw0"]
+[ext_resource type="Script" path="res://Script/Overlap/hitbox.gd" id="3_somt2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdbw3"]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u6ij"]
+size = Vector2(20, 6)
+
+[node name="Arrow" type="CharacterBody2D" groups=["bullet", "enemy_bullet"]]
+collision_layer = 8
+script = ExtResource("1_p3iw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bsbgw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sdbw3")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["bullet", "enemy_bullet"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_somt2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_2u6ij")
+debug_color = Color(0.996078, 0, 0.188235, 0.419608)

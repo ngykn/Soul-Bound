@@ -3243,6 +3243,7 @@ texture = ExtResource("6_7mkv2")
 2:11/0 = 0
 2:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:11/0/physics_layer_0/angular_velocity = 0.0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
 3:11/0 = 0
 3:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:11/0/physics_layer_0/angular_velocity = 0.0
@@ -3297,6 +3298,7 @@ texture = ExtResource("6_7mkv2")
 2:15/0 = 0
 2:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:15/0/physics_layer_0/angular_velocity = 0.0
+2:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
 3:15/0 = 0
 3:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:15/0/physics_layer_0/angular_velocity = 0.0
@@ -3353,7 +3355,7 @@ position = Vector2(672, 520)
 position = Vector2(1136, 176)
 
 [node name="CameraController" type="Camera2D" parent="."]
-position = Vector2(176, 192)
+position = Vector2(976, 408)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -3362,7 +3364,7 @@ limit_bottom = 1152
 script = ExtResource("9_ygieo")
 
 [node name="Player" parent="." instance=ExtResource("10_2ukp8")]
-position = Vector2(176, 192)
+position = Vector2(976, 424)
 
 [node name="Entry" type="Node2D" parent="."]
 

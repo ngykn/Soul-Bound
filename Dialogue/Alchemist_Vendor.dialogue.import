@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://c082xiubfr2i2"
+path="res://.godot/imported/Alchemist_Vendor.dialogue-36f8dea41e1c16033878bbda3832c123.tres"
+
+[deps]
+
+source_file="res://Dialogue/Alchemist_Vendor.dialogue"
+dest_files=["res://.godot/imported/Alchemist_Vendor.dialogue-36f8dea41e1c16033878bbda3832c123.tres"]
+
+[params]
+
+defaults=true

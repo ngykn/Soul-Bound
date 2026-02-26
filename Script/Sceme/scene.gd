@@ -1,5 +1,5 @@
 extends Scene
-#Something123
+
 @onready var apathy := $Apathy
 
 @onready var apathy_area : AreaCutscene = $CutScene/Apathy
@@ -13,8 +13,6 @@ func _ready() -> void:
 	await TransitionManager.scene_transition_finished
 	await GlobalFunction.costumize_show_dialogue(load("res://Dialogue/chapter_one.dialogue"),"mc_awoke")
 	ui.main_objectives.add_objective("Explore the unknown area")
-	#strange_man_area.player_entered.connect(_strange_man_cutscene)
-	#apathy_area.player_entered.connect(_apathy_cutscene)
 
 func _strange_man_cutscene() -> void:
 	if _have_met_strange_man:

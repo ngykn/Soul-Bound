@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcnb6jntlk04a"]
+
+[ext_resource type="PackedScene" uid="uid://cxj6veq6r53bh" path="res://Environment/station_template.tscn" id="1_sriqk"]
+[ext_resource type="Texture2D" uid="uid://c4cgs4owexrxr" path="res://Assets/Environment/Stations/Anvil.png" id="2_muhkt"]
+
+[node name="Station" instance=ExtResource("1_sriqk")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_muhkt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-48, 40, -36, 40, -36, 22, -24, 22, -24, 1, 17, 1, 17, 38, 49, 38, 49, 0, 33, 0, 33, -17, -48, -16)

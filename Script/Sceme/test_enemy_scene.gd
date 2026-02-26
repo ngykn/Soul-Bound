@@ -3,10 +3,17 @@ extends Scene
 
 func _ready():
 	ui.inventory._update_inventory("Sword")
-	$CharacterBody2D.follow_finished.connect(func(): print("finish"))
+	ui.inventory._update_inventory("Dash Ring")
 	camera.follow(player)
-	await get_tree().create_timer(3).timeout
-	$CharacterBody2D.go_to(player.global_position)
-	ui.main_objectives.add_objective("Testing")
-	await get_tree().create_timer(1).timeout
-	ui.main_objectives.completed_objective("Testing")
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("reload_game"):
+		_player_dead()
+
+func _player_dead() -> void:
+	await get_tree().create_timer(0.5).timeout
+	GlobalManager.player_life = 100
+	get_tree().reload_current_scene()
+
+func to_png() -> void:
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cwkpn7ley4nuo"]
+[gd_scene load_steps=31 format=3 uid="uid://cwkpn7ley4nuo"]
 
 [ext_resource type="Texture2D" uid="uid://dyuw5q32xm0c8" path="res://Assets/Environment/Floors_Tiles.png" id="1_k41iu"]
 [ext_resource type="Script" path="res://Script/Sceme/westfield.gd" id="1_kju8o"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="12_v646x"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="14_bb21g"]
 [ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="16_wcwn8"]
+[ext_resource type="PackedScene" uid="uid://dnqsmkynmsqeq" path="res://Entity/Enemy/Basic Enemy/skele.tscn" id="17_2xlc1"]
+[ext_resource type="PackedScene" uid="uid://bw3o41ok1rphs" path="res://Archer.tscn" id="17_sojmb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tca8x"]
 shader = ExtResource("1_nxf46")
@@ -3868,6 +3870,7 @@ script = ExtResource("1_kju8o")
 entry_point = NodePath("Entry")
 
 [node name="UI" parent="." instance=ExtResource("14_bb21g")]
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 use_parent_material = true
@@ -3883,6 +3886,7 @@ layer_2/tile_data = PackedInt32Array(3604548, 393218, 4, 3670084, 393218, 5, 373
 [node name="Obstacle" type="TileMap" parent="."]
 y_sort_enabled = true
 use_parent_material = true
+position = Vector2(0, -16)
 tile_set = SubResource("TileSet_taxa3")
 format = 2
 layer_0/name = "Trees"
@@ -3971,6 +3975,20 @@ shape = SubResource("RectangleShape2D_1nq5e")
 stream = ExtResource("16_wcwn8")
 autoplay = true
 bus = &"BGM"
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Skele2" parent="Enemy" instance=ExtResource("17_2xlc1")]
+position = Vector2(199, 942)
+
+[node name="Skele" parent="Enemy" instance=ExtResource("17_2xlc1")]
+position = Vector2(160, 839)
+
+[node name="enemy" parent="Enemy" instance=ExtResource("17_sojmb")]
+position = Vector2(142, 274)
+
+[node name="enemy2" parent="Enemy" instance=ExtResource("17_sojmb")]
+position = Vector2(212, 184)
 
 [editable path="ExitPoint/ExitPoint"]
 [editable path="ExitPoint/ExitPoint2"]

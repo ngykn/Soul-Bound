@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://botlfj8qthnrr"]
+[gd_scene load_steps=23 format=3 uid="uid://botlfj8qthnrr"]
 
 [ext_resource type="Script" path="res://Script/Sceme/cruelty_cave.gd" id="1_rwoxu"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="2_fewch"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://bnihbxlftct3n" path="res://Dialogue/cruelty_cave.dialogue" id="10_lhfif"]
 [ext_resource type="PackedScene" uid="uid://b2dx256e7n5or" path="res://Entity/Enemy/compassion.tscn" id="10_o3lq3"]
 [ext_resource type="AudioStream" uid="uid://cyxri6g3fxmk6" path="res://Assets/BGM/Goblins_Dance_(Battle).wav" id="12_g2h3k"]
+[ext_resource type="PackedScene" uid="uid://dnqsmkynmsqeq" path="res://Entity/Enemy/Basic Enemy/skele.tscn" id="14_obtv3"]
+[ext_resource type="PackedScene" uid="uid://bw3o41ok1rphs" path="res://Archer.tscn" id="15_uwl8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wxb24"]
 texture = ExtResource("3_eoo0y")
@@ -2680,6 +2682,14 @@ color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="Compassion" parent="." instance=ExtResource("10_o3lq3")]
 position = Vector2(1968, 320)
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Skele" parent="Enemy" instance=ExtResource("14_obtv3")]
+position = Vector2(152, 176)
+
+[node name="enemy" parent="Enemy" instance=ExtResource("15_uwl8j")]
+position = Vector2(392, 592)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_g2h3k")
