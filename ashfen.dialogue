@@ -24,7 +24,7 @@ Eldren : If it shines…
 Eldren : Ashfen will let you go where you’re meant to be.
 Item Acquired : [speed=1]Emberlight acquired
 do ui.inventory._update_inventory("Emberlight")
-do met_npcs.append("Eldren")
+
 => met_eldren
 
 ~ met_eldren

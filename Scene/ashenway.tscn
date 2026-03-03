@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bfqrlwas7cmiq"]
+[gd_scene load_steps=32 format=3 uid="uid://bfqrlwas7cmiq"]
 
 [ext_resource type="Shader" path="res://Shader/muted_color.gdshader" id="1_3f8v6"]
 [ext_resource type="Script" path="res://Script/Sceme/ashenway.gd" id="1_svwap"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="14_jkex1"]
 [ext_resource type="PackedScene" uid="uid://bw3o41ok1rphs" path="res://Archer.tscn" id="15_6ux5j"]
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="15_aokui"]
+[ext_resource type="PackedScene" uid="uid://7exd4j0d4cre" path="res://Entity/Enemy/Basic Enemy/goblin.tscn" id="16_38f4m"]
+[ext_resource type="PackedScene" uid="uid://byc687cnpvwf7" path="res://Object/chest_placer.tscn" id="17_tpfs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fs43"]
 shader = ExtResource("1_3f8v6")
@@ -2984,20 +2986,11 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_bq7ln")
 
 [node name="ExitPoint4" parent="ExitPoint" instance=ExtResource("15_aokui")]
-position = Vector2(1664, 2080)
-next_chunk = "res://Scene/ashfen.tscn"
-entry_point = "West3"
-
-[node name="CollisionShape2D" parent="ExitPoint/ExitPoint4" index="0"]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_bq7ln")
-
-[node name="ExitPoint5" parent="ExitPoint" instance=ExtResource("15_aokui")]
 position = Vector2(0, 1865)
 next_chunk = "res://Scene/southfield.tscn"
 entry_point = "East"
 
-[node name="CollisionShape2D" parent="ExitPoint/ExitPoint5" index="0"]
+[node name="CollisionShape2D" parent="ExitPoint/ExitPoint4" index="0"]
 shape = SubResource("RectangleShape2D_kirxu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -3012,9 +3005,18 @@ bus = &"BGM"
 [node name="enemy" parent="Enemy" instance=ExtResource("15_6ux5j")]
 position = Vector2(384, 1920)
 
+[node name="Goblin" parent="Enemy" instance=ExtResource("16_38f4m")]
+position = Vector2(1512, 704)
+
+[node name="Goblin2" parent="Enemy" instance=ExtResource("16_38f4m")]
+position = Vector2(1328, 568)
+
+[node name="ChessPlacer" parent="." instance=ExtResource("17_tpfs5")]
+position = Vector2(656, 536)
+id = 3
+
 [editable path="House/House3"]
 [editable path="ExitPoint/ExitPoint"]
 [editable path="ExitPoint/ExitPoint2"]
 [editable path="ExitPoint/ExitPoint3"]
 [editable path="ExitPoint/ExitPoint4"]
-[editable path="ExitPoint/ExitPoint5"]

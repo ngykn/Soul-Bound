@@ -3942,5 +3942,7 @@ stream = ExtResource("16_bt7ad")
 autoplay = true
 bus = &"BGM"
 
+[node name="enemy" type="Node2D" parent="."]
+
 [editable path="Exit/ExitPoint"]
 [editable path="Exit/ExitPoint2"]

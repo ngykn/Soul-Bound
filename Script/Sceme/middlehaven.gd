@@ -17,12 +17,12 @@ func _ready():
 		exit_point_3.set_collision_disabled(false)
 		exit_point_4.set_collision_disabled(false)
 		guard.queue_free()
-	else:
-		ui.main_objectives.add_objective("Explore the town")
 
 func _on_important_npc_dialogue_ended():
-	ui.main_objectives.completed_objective("Explore the town")
 	if is_instance_valid(guard):
+		GlobalReferences.map_sequence += 1
 		exit_point_2.set_collision_disabled(false)
 		exit_point_4.set_collision_disabled(false)
 		guard.queue_free()
+		await ui.main_objectives.completed_objective("Explore the town")
+		ui.main_objectives.add_objective("Locate the Ember House\nthen explore the Cave")

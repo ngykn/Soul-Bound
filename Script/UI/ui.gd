@@ -1,8 +1,8 @@
 class_name UI extends Control
 
 @onready var player_life : float = GlobalManager.player_life
-@onready var life_bar : TextureProgressBar = $CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer/VBoxContainer/Health
-@onready var armor = $CanvasLayer/MarginContainer/VBoxContainer/Health/Panel2/MarginContainer/HBoxContainer/VBoxContainer/Armor
+@onready var life_bar : TextureProgressBar = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer/VBoxContainer/Health
+@onready var armor = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Health/Panel/MarginContainer/HBoxContainer/VBoxContainer/Armor
 @onready var inventory = $CanvasLayer/Inventory
 @onready var main_objectives = $CanvasLayer/MarginContainer/VBoxContainer/MainObjectives
 @onready var menu = $CanvasLayer/MarginContainer/Pause
@@ -10,15 +10,13 @@ class_name UI extends Control
 @onready var minimap = $CanvasLayer/MarginContainer/Minimap/Panel/SubViewportContainer/SubViewport
 
 #items
-@onready var armor_icon = $CanvasLayer/MarginContainer/VBoxContainer/Items/Armor
-@onready var boot_icon = $CanvasLayer/MarginContainer/VBoxContainer/Items/Boot
-@onready var strength_icon = $CanvasLayer/MarginContainer/VBoxContainer/Items/Strength
-
+@onready var armor_icon = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Items/Armor
+@onready var boot_icon = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Items/Boot
+@onready var strength_icon = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Items/Strength
 
 #item quantity
-@onready var coin = $CanvasLayer/MarginContainer/VBoxContainer/Items/Coin/Label
-@onready var shield = $CanvasLayer/MarginContainer/VBoxContainer/Items/Shield/Label
-
+@onready var coin = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Items/Coin/Label
+@onready var shield = $CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Items/Shield/Label
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)

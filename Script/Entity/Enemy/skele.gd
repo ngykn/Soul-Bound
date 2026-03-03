@@ -1,13 +1,7 @@
 extends BASIC_ENEMY
 
-@onready var arm_aim :Node2D = $ArmAim
+
 @onready var arm_swing :Node2D = $ArmAim/ArmSwing
-@onready var sprite :Sprite2D = $Sprite2D
-@onready var raycast :RayCast2D = $RayCast2D
-@onready var life_bar = $ProgressBar
-@onready var movement_animation :AnimationPlayer = $MovementAnimation
-@onready var hurt_animation :AnimationPlayer= $HurtAnimation
-@onready var attack_animation :AnimationPlayer = $AttackAnimation
 
 enum states {
 	IDLE,
@@ -17,17 +11,19 @@ enum states {
 }
 
 var current_state : states = states.IDLE
-var lifebar_close_timer :float = 0.0 #max 1.5
-var arm_aim_speed := 4.0
 var min_target_pos : float = 15.0
 var max_target_pos : float = 30.0
 
-var _attacking : bool = false
-var _dead : bool = false
 var life : int = 3
 
-	
+
 func _physics_process(delta):
+	if lifebar_close_timer == 0:
+		life_bar.hide()
+	else:
+		life_bar.show()
+		lifebar_close_timer = clampf(lifebar_close_timer - delta, 0, 1.5)
+
 	if !player or _dead:
 		return
 
@@ -43,11 +39,6 @@ func _physics_process(delta):
 	if raycast.is_colliding():
 		current_state = states.IDLE
 
-	if lifebar_close_timer == 0:
-		life_bar.hide()
-	else:
-		life_bar.show()
-		lifebar_close_timer = clampf(lifebar_close_timer - delta, 0, 1.5)
 
 	raycast.enabled = true
 	raycast.look_at(player.global_position)
@@ -122,24 +113,8 @@ func damage(entity : Node2D) -> void:
 		_dead = true
 		movement_animation.play("death")
 		
-		GameState.coin += 20
-		
+		GameState.coin += 30
+		effects(30)
 		await movement_animation.animation_finished
 		await get_tree().create_timer(3).timeout
 		queue_free()
-
-func _update_arm_aim(delta: float) -> void:
-	var target_angle = (
-		(player.global_position - arm_aim.global_position)
-	).angle()
-
-	arm_aim.rotation = lerp_angle(
-		arm_aim.rotation,
-		target_angle,
-		arm_aim_speed * delta
-	)
-
-func _tween_arm_to_neutral() -> void:
-	var tween := create_tween()
-	tween.tween_property(arm_aim, "rotation", 0.0, 0.3)
-	await tween.finished

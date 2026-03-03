@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wq5jp1rgck26"]
+[gd_scene load_steps=16 format=3 uid="uid://wq5jp1rgck26"]
 
 [ext_resource type="Script" path="res://Script/Sceme/highlands_cave.gd" id="1_d0m3q"]
 [ext_resource type="Texture2D" uid="uid://cdoqqv3muwwr6" path="res://Assets/Environment/Wall_Tiles.png" id="1_jqlu2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bnrwj5otmodc3" path="res://Overlap/cave_entry.tscn" id="8_fvy3g"]
 [ext_resource type="AudioStream" uid="uid://dcidt2mvyptsm" path="res://Assets/BGM/Goblins_Den_(Regular).wav" id="9_krfua"]
 [ext_resource type="PackedScene" uid="uid://dnqsmkynmsqeq" path="res://Entity/Enemy/Basic Enemy/skele.tscn" id="10_nbpev"]
+[ext_resource type="PackedScene" uid="uid://7exd4j0d4cre" path="res://Entity/Enemy/Basic Enemy/goblin.tscn" id="11_qgg5x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdobu"]
 texture = ExtResource("1_jqlu2")
@@ -2424,3 +2425,6 @@ bus = &"BGM"
 
 [node name="Skele" parent="Enemy" instance=ExtResource("10_nbpev")]
 position = Vector2(480, 312)
+
+[node name="Goblin" parent="Enemy" instance=ExtResource("11_qgg5x")]
+position = Vector2(248, 408)

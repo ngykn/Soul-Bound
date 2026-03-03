@@ -2144,7 +2144,7 @@ script = ExtResource("2_7x7gd")
 [node name="UI" parent="." instance=ExtResource("3_ykry4")]
 
 [node name="CameraController" type="Camera2D" parent="."]
-position = Vector2(1144, 584)
+position = Vector2(1016, 608)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -2158,7 +2158,7 @@ texture = SubResource("GradientTexture2D_f6n08")
 
 [node name="Player" parent="." instance=ExtResource("5_b8y2x")]
 use_parent_material = true
-position = Vector2(1144, 584)
+position = Vector2(1016, 608)
 
 [node name="TileMap" type="TileMap" parent="."]
 use_parent_material = true
@@ -2177,7 +2177,7 @@ dialogue = ExtResource("9_afnt3")
 [node name="CutScene" type="Node2D" parent="."]
 
 [node name="Apathy" parent="CutScene" instance=ExtResource("10_cw7fn")]
-position = Vector2(4032, 960)
+position = Vector2(4160, 960)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutScene/Apathy"]
 shape = SubResource("RectangleShape2D_rvqfk")
@@ -2241,6 +2241,7 @@ bus = &"BGM"
 [connection signal="player_entered" from="CutScene/Apathy" to="." method="_apathy_cutscene"]
 [connection signal="player_entered" from="CutScene/StrangeMan" to="." method="_strange_man_cutscene"]
 [connection signal="dialogue_ended" from="NormalNpc" to="." method="_on_npc_dialogue_ended"]
+[connection signal="dialogue_ended" from="Hunter" to="." method="_on_hunter_dialogue_ended"]
 
 [editable path="ExitPoint/ExitPoint"]
 [editable path="NormalNpc"]

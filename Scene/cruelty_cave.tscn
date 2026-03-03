@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://botlfj8qthnrr"]
+[gd_scene load_steps=24 format=3 uid="uid://botlfj8qthnrr"]
 
 [ext_resource type="Script" path="res://Script/Sceme/cruelty_cave.gd" id="1_rwoxu"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="2_fewch"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://cyxri6g3fxmk6" path="res://Assets/BGM/Goblins_Dance_(Battle).wav" id="12_g2h3k"]
 [ext_resource type="PackedScene" uid="uid://dnqsmkynmsqeq" path="res://Entity/Enemy/Basic Enemy/skele.tscn" id="14_obtv3"]
 [ext_resource type="PackedScene" uid="uid://bw3o41ok1rphs" path="res://Archer.tscn" id="15_uwl8j"]
+[ext_resource type="PackedScene" uid="uid://byc687cnpvwf7" path="res://Object/chest_placer.tscn" id="17_870ai"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wxb24"]
 texture = ExtResource("3_eoo0y")
@@ -2694,5 +2695,9 @@ position = Vector2(392, 592)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_g2h3k")
 autoplay = true
+
+[node name="ChessPlacer" parent="." instance=ExtResource("17_870ai")]
+position = Vector2(512, 576)
+id = 2
 
 [connection signal="player_entered" from="AreaCutScene" to="." method="_on_area_cut_scene_player_entered"]

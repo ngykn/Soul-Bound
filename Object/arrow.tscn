@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://kc65empc52ie"]
 
 [ext_resource type="Texture2D" uid="uid://cn5m2y5m4c6dt" path="res://Assets/Entities/Skelee/Arrow.png" id="1_bsbgw"]
-[ext_resource type="Script" path="res://Object/arrow.gd" id="1_p3iw0"]
+[ext_resource type="Script" path="res://Script/arrow.gd" id="1_p3iw0"]
 [ext_resource type="Script" path="res://Script/Overlap/hitbox.gd" id="3_somt2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdbw3"]

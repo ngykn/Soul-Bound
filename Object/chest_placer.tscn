@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byc687cnpvwf7"]
+
+[ext_resource type="Script" path="res://Script/chess_placer.gd" id="1_q4sli"]
+
+[node name="ChestPlacer" type="Marker2D"]
+script = ExtResource("1_q4sli")

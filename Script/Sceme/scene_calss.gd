@@ -45,6 +45,7 @@ var map := [
 			#KEY_0:
 				#TransitionManager.change_scene(self,map[9])
 func _ready():
+	print(GlobalReferences.map_sequence)
 	camera.follow(player)
 	player.dead.connect(_player_dead)
 	if entry_point:

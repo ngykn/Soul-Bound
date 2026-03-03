@@ -4,5 +4,4 @@
 ????: Hard to tell where you’re going, isn’t it?
 ????: Some light still listens to this place.
 ????: The old ember kind.
-do met_npcs.append("AshfenCaveNPC")
 => END

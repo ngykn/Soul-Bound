@@ -3,7 +3,6 @@ extends Scene
 var entered := false
 @onready var apathy = $Apathy2
 
-
 func _on_area_cut_scene_player_entered():
 	if entered or not is_instance_valid(apathy):
 		return
@@ -22,3 +21,9 @@ func _on_apathy_2_vulnerable():
 	await camera.finished_pan
 	camera.follow(player)
 	GameState.input_enabled = true
+
+func _on_normal_npc_dialogue_ended():
+	if !NpcManager.met_npcs.has("Eldren"):
+		GlobalReferences.map_sequence += 1
+		ui.main_objectives.completed_objective("Locate the Ember House\nthen explore the Cave")
+		NpcManager.met_npcs.append("Eldren")

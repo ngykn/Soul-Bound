@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://co4d4o4be6brk"]
+[gd_scene load_steps=25 format=3 uid="uid://co4d4o4be6brk"]
 
 [ext_resource type="Texture2D" uid="uid://dyuw5q32xm0c8" path="res://Assets/Environment/Floors_Tiles.png" id="1_3iur1"]
 [ext_resource type="Script" path="res://Script/Sceme/tutorial.gd" id="1_fqdl3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Script/Object/Camera.gd" id="6_0fah7"]
 [ext_resource type="Texture2D" uid="uid://dj5ey82080363" path="res://Assets/Environment/Size_03.png" id="6_iurro"]
 [ext_resource type="Texture2D" uid="uid://diyfq20sd76na" path="res://Assets/UI/ValueBlue_120x8.png" id="6_rdka6"]
+[ext_resource type="FontFile" uid="uid://bw8ab3cof8ejf" path="res://Assets/Game Paused DEMO.otf" id="7_qdprf"]
 [ext_resource type="PackedScene" uid="uid://cfpp0lwt61vtj" path="res://Environment/House/house_3.tscn" id="11_yihnw"]
 [ext_resource type="PackedScene" uid="uid://cu4lw10lxdrwh" path="res://Entity/NPC/NPC/normal_npc.tscn" id="12_m7mai"]
 [ext_resource type="PackedScene" uid="uid://cv0meg87b44st" path="res://Object/Dummy.tscn" id="13_38uvt"]
@@ -3110,9 +3111,27 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(170, 33)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -10.5
+offset_right = 82.5
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("7_qdprf")
 theme_override_font_sizes/font_size = 20
 text = "Tutorial Progress"
 

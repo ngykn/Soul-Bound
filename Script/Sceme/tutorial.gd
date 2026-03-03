@@ -8,6 +8,8 @@ extends Scene
 
 enum tutorial_list {
 	MOVEMENT,
+	MAP,
+	COMPASS,
 	INTERACT,
 	INVENTORY,
 	ATTACK,
@@ -29,6 +31,10 @@ var dummy_life := 5
 func _ready():
 	super._ready()
 	
+	#UI
+	ui.minimap.maximize.connect(_map_tutorial)
+	ui.minimap.compass_close.connect(_compass_tutorial)
+	ui.minimap.close_compass(true)
 	#NPC
 	$NPC/NormalNpc.dialogue_ended.connect(_interaction_tutorial)
 	$NPC/NormalNpc2.dialogue_ended.connect(_interaction_tutorial)
@@ -64,11 +70,23 @@ func _movement_tutorial(delta) -> void:
 
 	if (w + a + s + d) == 0:
 		tween_progress(25)
+		current_tutorial = tutorial_list.MAP
+		ui.main_objectives.completed_objective("Roam around")
+		GlobalFunction.costumize_show_dialogue(preload("res://Dialogue/Tutorial.dialogue"),"map")
+
+func _map_tutorial() -> void:
+	if current_tutorial == tutorial_list.MAP:
+		ui.main_objectives.completed_objective("Expand the Map")
+		current_tutorial = tutorial_list.COMPASS
+		GlobalFunction.costumize_show_dialogue(preload("res://Dialogue/Tutorial.dialogue"),"compass")
+
+func _compass_tutorial(value) -> void:
+	if current_tutorial == tutorial_list.COMPASS:
+		ui.main_objectives.completed_objective("Show the Compass")
 		camera.follow(player)
 		current_tutorial = tutorial_list.INTERACT
-		ui.main_objectives.completed_objective("Roam around")
 		GlobalFunction.costumize_show_dialogue(preload("res://Dialogue/Tutorial.dialogue"),"go_to_npc")
-
+	
 func _interaction_tutorial() -> void:
 	if !current_tutorial == tutorial_list.INTERACT:
 		return
@@ -76,7 +94,7 @@ func _interaction_tutorial() -> void:
 	tween_progress(50)
 	current_tutorial = tutorial_list.ATTACK
 	ui.main_objectives.completed_objective("Interact with the people")
-
+	GlobalReferences.map_sequence += 1
 func _inventory_tutorial(item) -> void:
 	if item != "Health":
 		return
@@ -86,7 +104,7 @@ func _inventory_tutorial(item) -> void:
 	ui.show_inventory()
 	ui.main_objectives.completed_objective("Open your Inventory & take the life potion")
 	GlobalFunction.costumize_show_dialogue(preload("res://Dialogue/Tutorial.dialogue"),"second_trainer_interaction")
-
+	GlobalReferences.map_sequence += 1
 
 func _attack_tutorial() -> void:
 	if !current_tutorial == tutorial_list.ATTACK:
@@ -96,13 +114,14 @@ func _attack_tutorial() -> void:
 	if dummy_life == 0:
 		current_tutorial = tutorial_list.END
 		tween_progress(100)
-		ui.main_objectives.completed_objective("Attack the dummy 5x")
+		await ui.main_objectives.completed_objective("Attack the dummy 5x")
 		_tutorial_finished()
 
 
 func _tutorial_finished() -> void:
 	GlobalFunction.costumize_show_dialogue(preload("res://Dialogue/Tutorial.dialogue"),"end")
 	await GlobalFunction.dialogue_ended
+	GlobalReferences.map_sequence += 1
 	TransitionManager.change_scene(self,"res://Scene/barrenland.tscn")
 
 func tween_progress(to : float) -> void:

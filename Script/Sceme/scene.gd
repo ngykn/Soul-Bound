@@ -18,7 +18,7 @@ func _strange_man_cutscene() -> void:
 	if _have_met_strange_man:
 		return
 
-	player.start_cutscene_move(Vector2(2744,632))
+	player.start_cutscene_move(Vector2(3184,1056))
 	await player.cutscene_movement_finished
 	await get_tree().create_timer(1).timeout
 	player._handle_interaction()
@@ -46,11 +46,18 @@ func _on_npc_dialogue_ended() -> void:
 	await TransitionManager.animation_in_finished
 	$NormalNpc.queue_free()
 	TransitionManager.fade_out()
+	GlobalReferences.map_sequence += 1
 
 func _on_apathy_vulnerable():
 	ui.main_objectives.completed_objective("Defeat Apathy")
 	$ExitPoint/ExitPoint.set_collision_disabled(false)
+	GlobalReferences.map_sequence += 1
 
 func _player_dead() -> void:
 	GlobalManager.player_life = 100
 	get_tree().reload_current_scene()
+
+func _on_hunter_dialogue_ended():
+	if !NpcManager.met_npcs.has("Hunter"):
+		GlobalReferences.map_sequence += 1
+		NpcManager.met_npcs.append("Hunter")

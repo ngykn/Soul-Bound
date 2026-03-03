@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://iw68fntv8oyt"]
+[gd_scene load_steps=32 format=3 uid="uid://iw68fntv8oyt"]
 
 [ext_resource type="Texture2D" uid="uid://dyuw5q32xm0c8" path="res://Assets/Environment/Floors_Tiles.png" id="1_h1kew"]
 [ext_resource type="Script" path="res://Script/Sceme/southfield.gd" id="1_nn8j5"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://cnmcdpw7vl82x" path="res://Overlap/exit_point.tscn" id="12_3w5ob"]
 [ext_resource type="PackedScene" uid="uid://betw6tyuc6ymp" path="res://Screen Overlay Effects/fog_effect.tscn" id="15_qgs3g"]
 [ext_resource type="AudioStream" uid="uid://js6psnvrjuhh" path="res://Assets/SFX/14_Wind_loop.wav" id="16_lxx0w"]
+[ext_resource type="PackedScene" uid="uid://7exd4j0d4cre" path="res://Entity/Enemy/Basic Enemy/goblin.tscn" id="17_ktpiv"]
+[ext_resource type="PackedScene" uid="uid://bw3o41ok1rphs" path="res://Archer.tscn" id="18_4lsod"]
+[ext_resource type="PackedScene" uid="uid://byc687cnpvwf7" path="res://Object/chest_placer.tscn" id="19_qyktp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bg65"]
 shader = ExtResource("1_opk42")
@@ -3355,7 +3358,7 @@ position = Vector2(672, 520)
 position = Vector2(1136, 176)
 
 [node name="CameraController" type="Camera2D" parent="."]
-position = Vector2(976, 408)
+position = Vector2(144, 848)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -3364,7 +3367,7 @@ limit_bottom = 1152
 script = ExtResource("9_ygieo")
 
 [node name="Player" parent="." instance=ExtResource("10_2ukp8")]
-position = Vector2(976, 424)
+position = Vector2(144, 864)
 
 [node name="Entry" type="Node2D" parent="."]
 
@@ -3427,6 +3430,30 @@ shape = SubResource("RectangleShape2D_lupw6")
 stream = ExtResource("16_lxx0w")
 autoplay = true
 bus = &"BGM"
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Goblin" parent="Enemy" instance=ExtResource("17_ktpiv")]
+position = Vector2(752, 776)
+
+[node name="Goblin2" parent="Enemy" instance=ExtResource("17_ktpiv")]
+position = Vector2(1056, 744)
+
+[node name="Goblin3" parent="Enemy" instance=ExtResource("17_ktpiv")]
+position = Vector2(872, 120)
+
+[node name="Goblin4" parent="Enemy" instance=ExtResource("17_ktpiv")]
+position = Vector2(496, 160)
+
+[node name="enemy" parent="Enemy" instance=ExtResource("18_4lsod")]
+position = Vector2(704, 216)
+
+[node name="enemy2" parent="Enemy" instance=ExtResource("18_4lsod")]
+position = Vector2(944, 248)
+
+[node name="ChessPlacer" parent="." instance=ExtResource("19_qyktp")]
+position = Vector2(168, 832)
+id = 5
 
 [editable path="ExitPoint2/ExitPoint"]
 [editable path="ExitPoint2/ExitPoint2"]

@@ -8,7 +8,28 @@ Narrator: Go ahead.
 Narrator: Stretch your legs.
 Narrator: Nothing is chasing you.
 do ui.main_objectives.add_objective("Roam around")
+=> END
 
+~ map
+Narrator: You won’t be wandering blindly.
+Narrator: A map will slowly reveal itself as you explore.
+Narrator: The more you move, the more it remembers.
+
+Narrator: If you want to see it fully—
+Narrator: Press R.
+do ui.main_objectives.add_objective("Expand the Map")
+=> END
+
+~ compass
+Narrator: And above all, follow the compass.
+Narrator: It points the way forward.
+
+Narrator: But don’t rely on it blindly.
+Narrator: Make sure the path feels right.
+
+Narrator: If you need a clearer view—
+Narrator: Press Q to hide or show the compass.
+do ui.main_objectives.add_objective("Show the Compass")
 => END
 
 ~ go_to_npc

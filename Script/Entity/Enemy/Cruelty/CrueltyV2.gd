@@ -19,7 +19,7 @@ signal dead
 @onready var arm_aim: Node2D = $ArmAim
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurt_animation = $HurtAnimation
-
+@onready var life_bar = $ProgressBar
 const BULLET_SCENE: PackedScene = preload("res://Object/orb_bullet.tscn")
 const BURST_COUNT := 16
 @onready var spawn_point : Marker2D = $ArmAim/ArmSwing/Scythe/SpawnPoint
@@ -33,9 +33,11 @@ var _is_dead := false
 var arm_aim_speed := 4.0
 var move_speed := 100.0
 
-#Attacj
+#Attack
 var can_aim := true
 var is_attacking := false
+
+var lifebar_close_timer := 0.0  #max 1.5
 
 #Target
 var target: Player
@@ -47,16 +49,21 @@ var ai_state: AIState = AIState.IDLE
 var previous_state : AIState
 var retreat_target: Vector2
 
-
 func start() -> void:
 	target = get_tree().current_scene.player
 	_start_idle()
 
 func _physics_process(delta: float) -> void:
+	if lifebar_close_timer == 0:
+		life_bar.hide()
+	else:
+		life_bar.show()
+		lifebar_close_timer = clampf(lifebar_close_timer - delta, 0, 1.5)
+	
 	if not target or _is_dead:
 		velocity = Vector2.ZERO
 		return
-		
+	
 	_handle_animation()
 
 	#_flip_sprite()
@@ -247,6 +254,8 @@ func _on_hurtbox_hurt(entity):
 	if _is_hurt or _is_dead:
 		return
 
+	lifebar_close_timer = 1.5
+
 	_is_hurt = true
 
 	var damageP := 1
@@ -254,7 +263,8 @@ func _on_hurtbox_hurt(entity):
 	if GlobalManager.strength:
 		damageP = 3
 
-	life -= damageP
+	life = clamp(life - damageP, 0, 3)
+	life_bar.value = life
 
 	hurt_animation.play("hurt")
 	await hurt_animation.animation_finished
@@ -264,4 +274,3 @@ func _on_hurtbox_hurt(entity):
 		_is_dead = true
 		_handle_death()
 		ai_state = AIState.DEAD
-		

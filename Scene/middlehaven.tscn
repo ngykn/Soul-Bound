@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bqes3hyrpbo47"]
+[gd_scene load_steps=52 format=3 uid="uid://bqes3hyrpbo47"]
 
 [ext_resource type="Script" path="res://Script/Sceme/middlehaven.gd" id="1_nod5e"]
 [ext_resource type="Texture2D" uid="uid://cdoqqv3muwwr6" path="res://Assets/Environment/Wall_Tiles.png" id="1_ol5dx"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://brf0jkyeaq6k3" path="res://Environment/house.tscn" id="12_tk64b"]
 [ext_resource type="PackedScene" uid="uid://d3oyjuurceu3u" path="res://Environment/Station/Alchemy.tscn" id="13_7ei1r"]
 [ext_resource type="PackedScene" uid="uid://bfsyfk4fk2in5" path="res://Environment/butchery.tscn" id="13_qu7n0"]
-[ext_resource type="PackedScene" uid="uid://d3fo385sht315" path="res://Screen Overlay Effects/firefly_effect.tscn" id="14_5emhh"]
 [ext_resource type="PackedScene" uid="uid://d2r1gemhapw8" path="res://Environment/Station/alchemy2.tscn" id="14_qtiwb"]
 [ext_resource type="PackedScene" uid="uid://b504ehhyvhj3o" path="res://Environment/House/house1.tscn" id="15_544d5"]
 [ext_resource type="Resource" uid="uid://dn2ny1h6aiwwy" path="res://Dialogue/middlehaven_npc.dialogue" id="19_2hdo5"]
@@ -7703,30 +7702,6 @@ sources/1 = SubResource("TileSetAtlasSource_yp5qc")
 sources/5 = SubResource("TileSetAtlasSource_tk2hu")
 sources/2 = SubResource("TileSetAtlasSource_e5tft")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y4epr"]
-resource_local_to_scene = true
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(640, 360, 0)
-gravity = Vector3(0, 0, 0)
-linear_accel_max = 1.0
-scale_min = 0.5
-scale_max = 0.8
-turbulence_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_fys6o"]
-resource_local_to_scene = true
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_iqmja"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_fys6o")
-width = 20
-height = 20
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmmig"]
 size = Vector2(42, 80)
 
@@ -7740,8 +7715,6 @@ script = ExtResource("1_nod5e")
 entry_point = NodePath("EntryPoint")
 
 [node name="UI" parent="." instance=ExtResource("3_tbfmy")]
-
-[node name="ClientPreference" type="CanvasLayer" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
 use_parent_material = true
@@ -7791,10 +7764,6 @@ limit_top = 80
 limit_right = 1520
 limit_bottom = 1024
 script = ExtResource("12_n7i0c")
-
-[node name="Firefly" parent="CameraController" instance=ExtResource("14_5emhh")]
-process_material = SubResource("ParticleProcessMaterial_y4epr")
-texture = SubResource("GradientTexture2D_iqmja")
 
 [node name="Houses" type="Node2D" parent="."]
 y_sort_enabled = true

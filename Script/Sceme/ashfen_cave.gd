@@ -12,3 +12,10 @@ func _ready():
 		cave_entry_2.exit_point = "Cave2"
 	else:
 		player.player_light(true,0.7)
+
+func _on_normal_npc_dialogue_ended():
+	if !NpcManager.met_npcs.has("AshfenCaveNPC"):
+		NpcManager.met_npcs.append("AshfenCaveNPC")
+		GlobalReferences.map_sequence += 1
+
+	print(GlobalReferences.map_sequence)

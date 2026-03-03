@@ -260,12 +260,12 @@ func _handle_hit(instance : Node2D) -> void:
 	camera.shake()
 	
 	if armor > 0:
-		health -= randf_range(5.0,10.0)
-		armor -= randf_range(5.0,20.0)
+		health -= randf_range(3.0,8.0)
+		armor -= randf_range(5.0,10.0)
 		GlobalManager.player_life = health
 		GlobalManager.armor = armor
 	else:
-		health -= randf_range(10.0,20.0)
+		health -= randf_range(5.0,15.0)
 		GlobalManager.player_life = health
 		GlobalManager.armor = armor
 

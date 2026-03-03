@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ca0jsoxwctdo7"]
+[gd_scene load_steps=22 format=3 uid="uid://ca0jsoxwctdo7"]
 
 [ext_resource type="Script" path="res://Script/Sceme/ashfen_cave.gd" id="1_5j5f5"]
 [ext_resource type="PackedScene" uid="uid://btidq6wnbga24" path="res://UI/ui.tscn" id="2_m50wq"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dcidt2mvyptsm" path="res://Assets/BGM/Goblins_Den_(Regular).wav" id="10_01dt4"]
 [ext_resource type="Script" path="res://Script/System/chunk_entry_point.gd" id="10_fi4e3"]
 [ext_resource type="Script" path="res://Script/Overlap/CaveEntry.gd" id="11_nsstp"]
+[ext_resource type="PackedScene" uid="uid://byc687cnpvwf7" path="res://Object/chest_placer.tscn" id="14_q8uan"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4yade"]
 texture = ExtResource("3_x5sik")
@@ -3308,7 +3309,7 @@ layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(917516, 524289, 1, 720912, 393217, 1, 917525, 524289, 1, 851993, 393217, 1, 983069, 393217, 1, 983071, 393217, 1, 720928, 393217, 1, 720930, 524289, 1, 1376295, 524289, 1, 1376298, 393217, 1, 1048620, 720897, 1, 1114156, 720897, 1, 1376300, 524289, 1, 1048623, 720897, 1, 1572915, 524289, 1, 1572917, 524289, 1, 1048631, 524289, 1, 1245239, 393217, 1, 1572919, 524289, 1, 786489, 524289, 1, 720955, 393217, 1, 1572930, 524289, 1)
 
 [node name="Player" parent="." instance=ExtResource("8_2kr7y")]
-position = Vector2(192, 616)
+position = Vector2(192, 440)
 
 [node name="CameraController" type="Camera2D" parent="."]
 position = Vector2(208, 320)
@@ -3354,7 +3355,7 @@ shape = SubResource("RectangleShape2D_p7ia2")
 [node name="NPC" type="Node2D" parent="."]
 
 [node name="NormalNpc" parent="NPC" instance=ExtResource("8_mmvc5")]
-position = Vector2(192, 424)
+position = Vector2(192, 384)
 starting_direction = "up"
 dialogue_id = ExtResource("9_ky4y6")
 dialogue_title = "npc"
@@ -3363,3 +3364,9 @@ dialogue_title = "npc"
 stream = ExtResource("10_01dt4")
 autoplay = true
 bus = &"BGM"
+
+[node name="ChessPlacer" parent="." instance=ExtResource("14_q8uan")]
+position = Vector2(192, 136)
+id = 1
+
+[connection signal="dialogue_ended" from="NPC/NormalNpc" to="." method="_on_normal_npc_dialogue_ended"]

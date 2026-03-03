@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bt7khv16b41gg"]
+[gd_scene load_steps=35 format=3 uid="uid://bt7khv16b41gg"]
 
 [ext_resource type="Script" path="res://Script/Entity/Enemy/Cruelty/CrueltyV2.gd" id="1_5qvrf"]
 [ext_resource type="Texture2D" uid="uid://dbsqvjfsatrfp" path="res://Place Holder Art/Enemy/Cruelty/Idle-Sheet.png" id="1_hjbsh"]
@@ -714,6 +714,20 @@ size = Vector2(20, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cdx7m"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au0js"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fona"]
+bg_color = Color(0.705882, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Cruelty" type="CharacterBody2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_v7cto")
@@ -789,5 +803,18 @@ bus = &"SFX"
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_gqg2f")
 bus = &"SFX"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(25, 0)
+offset_left = -13.0
+offset_top = -24.0
+offset_right = 12.0
+offset_bottom = -20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_au0js")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1fona")
+max_value = 3.0
+value = 3.0
+show_percentage = false
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

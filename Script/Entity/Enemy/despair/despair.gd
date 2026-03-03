@@ -17,16 +17,20 @@ signal dead
 @export var echo_interval := 5.0
 @export var orbit_interval := 14.0
 
+@onready var life_bar = $ProgressBar
+
 @export var dialogue : DialogueResource
 @export var title := ""
 
-var life := 3
+var life := 5
 var _is_dead := false
 var _is_hurt := false
 var _is_vulnerable := false
 var orb_scene := preload("res://Object/apathy_orb.tscn")
 var hollow_bullet_scene := preload("res://Object/orb_bullet.tscn")
 var empty_orbit_scene := preload("res://orbit_controller.tscn")
+
+var lifebar_close_timer : = 0.0 #Max 1.5
 
 var recovery_time := 5.0
 var basic_timer := 0.0
@@ -48,6 +52,12 @@ func _ready():
 
 
 func _process(delta):
+	if lifebar_close_timer == 0:
+		life_bar.hide()
+	else:
+		life_bar.show()
+		lifebar_close_timer = clampf(lifebar_close_timer - delta, 0, 1.5)
+	
 	if not active or _is_vulnerable:
 		return
 
@@ -169,6 +179,7 @@ func _on_hurtbox_hurt(entity):
 	if _is_dead or _is_hurt:
 		return
 	
+	lifebar_close_timer = 1.5
 	_is_hurt = true
 	
 	hurt_animation.play("hurt")
@@ -178,7 +189,9 @@ func _on_hurtbox_hurt(entity):
 	if GlobalManager.strength:
 		damageP = 3
 
-	life -= damageP
+	life = clamp(life - damageP, 0, 5)
+	life_bar.value = life
+
 	if life <= 0:
 		$Arm.hide()
 		if _is_vulnerable:

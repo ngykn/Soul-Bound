@@ -18,6 +18,9 @@ signal dead
 @onready var hurtbox = $Hurtbox
 @onready var collision_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
+@onready var attack_bar = $ProgressBar
+
+var dramatic_attack_count : int
 
 var is_vulnerable : bool = false
 var is_dead : bool = false
@@ -26,12 +29,17 @@ func _ready():
 	if GlobalReferences.killed_enemy.has(id):
 		queue_free()
 
+	if dialogue:
+		dramatic_attack_count = dialogue.titles.size()
+		attack_bar.max_value = dramatic_attack_count
+		attack_bar.value = dramatic_attack_count
 
 # =========================
 # PUBLIC API
 # =========================
 
 func start_attack() -> void:
+	attack_bar.visible = true
 	_handle_attack()
 	
 func dramatic_attack() -> void:
@@ -39,16 +47,26 @@ func dramatic_attack() -> void:
 		printerr("dialogue : null")
 		return
 
-	for d in dialogue.titles: 
+	var attack_finished_count = 0
+	
+	attack_bar.visible = true
+	
+	for d in dialogue.titles:
 		GlobalFunction.costumize_show_dialogue(dialogue, d)
 		await GlobalFunction.dialogue_ended
 		await _handle_attack()
+		attack_finished_count += 1
+		await progress_tween(dramatic_attack_count - attack_finished_count)
 
 	_handle_vulnerable()
 
 # ========================
 # INTERNAL
 # ========================
+func progress_tween(attack_left) -> void:
+	var tween = create_tween()
+	tween.tween_property(attack_bar, "value", attack_left, 0.2)
+	await tween.finished
 
 func _handle_attack() -> void:
 	var attack_count := 0
@@ -87,3 +105,4 @@ func _die(entity : Node2D) -> void:
 		is_dead = true
 		GlobalReferences.morality -= 10
 		emit_signal("dead")
+		attack_bar.visible = false

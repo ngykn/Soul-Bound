@@ -2111,7 +2111,6 @@ size_flags_vertical = 0
 text = "Scene"
 
 [node name="UI2" parent="." instance=ExtResource("3_o6mmx")]
-mouse_filter = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 use_parent_material = true
